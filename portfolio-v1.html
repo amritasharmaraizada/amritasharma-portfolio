@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amrita Sharma — AI & Data Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#D4AF37;--gold-light:#F0D060;--gold-dim:#8B6914;--gold-glow:rgba(212,175,55,0.12);
+  --black:#0A0A0A;--black-2:#111111;--black-3:#1A1A1A;--black-4:#222222;--black-5:#2A2A2A;
+  --text-primary:#F5F0E0;--text-secondary:#9A9080;--text-muted:#5A5040;
+  --border:rgba(212,175,55,0.15);--border-hover:rgba(212,175,55,0.4);
+  --radius:12px;--radius-sm:8px;
+  --admin-accent:#4EC9C9;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text-primary);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(212,175,55,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+
+/* ── LOGO SVG ── */
+.logo-wrap{display:flex;align-items:center;gap:0.6rem;text-decoration:none;}
+.logo-svg{width:38px;height:38px;flex-shrink:0;}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:0.02em;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0.85rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-links{display:flex;gap:1.8rem;align-items:center;}
+.nav-links a{font-size:0.8rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.42rem 1rem;border-radius:6px;font-weight:600!important;}
+.nav-cta:hover{background:var(--gold-light)!important;}
+.admin-nav-btn{background:rgba(78,201,201,0.1);border:1px solid rgba(78,201,201,0.3);color:var(--admin-accent);font-size:0.75rem;font-family:'JetBrains Mono',monospace;padding:0.38rem 0.9rem;border-radius:6px;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s;}
+.admin-nav-btn:hover{background:rgba(78,201,201,0.2);}
+.admin-active-badge{display:none;align-items:center;gap:0.4rem;background:rgba(78,201,201,0.15);border:1px solid rgba(78,201,201,0.4);border-radius:100px;padding:0.3rem 0.8rem;font-size:0.7rem;font-family:'JetBrains Mono',monospace;color:var(--admin-accent);}
+.admin-active-badge.show{display:flex;}
+.admin-dot{width:5px;height:5px;border-radius:50%;background:var(--admin-accent);animation:blink 1.5s infinite;}
+
+/* ── ADMIN EDIT OVERLAYS ── */
+.edit-btn{display:none;position:absolute;top:8px;right:8px;background:rgba(78,201,201,0.9);border:none;border-radius:6px;color:#0A0A0A;font-size:0.68rem;font-weight:600;font-family:'DM Sans',sans-serif;padding:0.28rem 0.6rem;cursor:pointer;z-index:50;letter-spacing:0.03em;transition:all 0.15s;}
+.edit-btn:hover{background:var(--admin-accent);transform:scale(1.05);}
+body.admin-mode .edit-btn{display:block;}
+body.admin-mode .editable-section{outline:1px dashed rgba(78,201,201,0.25);outline-offset:4px;}
+
+/* ── HERO ── */
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;overflow:hidden;}
+.hero-orb{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:pulse 7s ease-in-out infinite;}
+.hero-orb2{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(78,201,201,0.05) 0%,transparent 70%);top:25%;left:15%;pointer-events:none;animation:pulse2 9s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.6;scale:1;}50%{opacity:1;scale:1.1;}}
+@keyframes pulse2{0%,100%{opacity:0.4;scale:1;}50%{opacity:0.8;scale:1.15;}}
+.hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:var(--black-3);border:1px solid var(--border);border-radius:100px;padding:0.38rem 1rem;font-size:0.72rem;font-weight:500;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp 0.6s ease both;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 2s ease infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6.5vw,5rem);font-weight:900;line-height:1.06;letter-spacing:-0.02em;margin-bottom:1.4rem;animation:fadeUp 0.7s 0.1s ease both;}
+.hero-title .gold{color:var(--gold);}
+.hero-subtitle{font-size:1.02rem;color:var(--text-secondary);max-width:620px;line-height:1.75;margin-bottom:1.5rem;animation:fadeUp 0.7s 0.2s ease both;font-weight:300;}
+.hero-narrative{font-size:0.88rem;color:var(--text-muted);max-width:580px;line-height:1.75;margin-bottom:2.5rem;animation:fadeUp 0.7s 0.25s ease both;font-style:italic;font-weight:300;border-left:2px solid var(--border-hover);padding-left:1rem;text-align:left;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:0.45rem;justify-content:center;margin-bottom:3rem;animation:fadeUp 0.7s 0.3s ease both;}
+.chip{background:var(--black-3);border:1px solid var(--border);border-radius:100px;padding:0.28rem 0.8rem;font-size:0.72rem;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;transition:all 0.2s;cursor:default;}
+.chip:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-glow);}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.7s 0.4s ease both;}
+.btn-primary{background:var(--gold);color:var(--black);border:none;border-radius:var(--radius-sm);padding:0.82rem 1.9rem;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--border-hover);border-radius:var(--radius-sm);padding:0.82rem 1.9rem;font-size:0.88rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{background:var(--gold-glow);transform:translateY(-2px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── STATS ── */
+.stats-bar{position:relative;z-index:1;display:flex;justify-content:center;background:var(--black-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.4rem 2rem;flex-wrap:wrap;}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:0 2.5rem;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--gold);}
+.stat-label{font-size:0.68rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.15rem;}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:5rem 2rem;}
+.section-label{font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.8rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;margin-bottom:0.75rem;line-height:1.2;}
+.section-desc{color:var(--text-secondary);font-size:0.92rem;line-height:1.75;max-width:560px;font-weight:300;margin-bottom:2.5rem;}
+
+/* ── CLIENT SECTION ── */
+#client-projects{position:relative;z-index:1;background:var(--black-2);max-width:100%;padding:5rem 0;}
+.client-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.client-banner{background:var(--black-3);border:1px solid var(--border-hover);border-radius:var(--radius);padding:1.4rem 1.8rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:1.4rem;}
+.client-banner-icon{font-size:1.8rem;flex-shrink:0;}
+.client-banner-text{font-size:0.88rem;color:var(--text-secondary);line-height:1.7;font-weight:300;}
+.client-banner-text strong{color:var(--text-primary);font-weight:500;}
+.lock-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(212,175,55,0.08);border:1px solid var(--border-hover);border-radius:100px;padding:0.28rem 0.75rem;font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:0.06em;margin-bottom:1.8rem;}
+
+/* ── CASE CARDS ── */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.5rem;}
+.case-card{background:var(--black-3);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.3s;position:relative;}
+.case-card:hover{border-color:var(--gold);box-shadow:0 16px 50px rgba(212,175,55,0.08);}
+.case-card-header{padding:1.4rem 1.4rem 0;}
+.case-card-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.8rem;}
+.case-card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;line-height:1.3;}
+.case-card-desc{font-size:0.8rem;color:var(--text-secondary);line-height:1.6;font-weight:300;padding:0 1.4rem 0.9rem;}
+.case-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);background:var(--black-4);}
+.cm{padding:0.75rem;text-align:center;border-right:1px solid var(--border);}
+.cm:last-child{border-right:none;}
+.cm-val{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold);}
+.cm-label{font-size:0.62rem;color:var(--text-muted);letter-spacing:0.04em;text-transform:uppercase;margin-top:0.1rem;}
+.case-card-footer{padding:0.85rem 1.4rem;display:flex;justify-content:space-between;align-items:center;}
+.case-expand-btn{font-size:0.72rem;font-weight:600;color:var(--gold);background:none;border:1px solid var(--border-hover);border-radius:6px;padding:0.32rem 0.75rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.case-expand-btn:hover{background:var(--gold-glow);}
+.case-year{font-size:0.68rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+.case-detail{display:none;border-top:1px solid var(--border);padding:1.4rem;background:rgba(10,10,10,0.6);animation:fadeUp 0.3s ease both;}
+.case-detail.open{display:block;}
+.conf-note{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--text-muted);background:var(--black-4);border:1px solid var(--border);border-radius:6px;padding:0.25rem 0.65rem;margin-bottom:1.2rem;}
+.detail-label{font-size:0.65rem;font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.35rem;}
+.detail-text{font-size:0.8rem;color:var(--text-secondary);line-height:1.7;font-weight:300;margin-bottom:0.8rem;}
+.detail-decision{border-left:2px solid var(--border-hover);padding:0.55rem 0.85rem;margin:0.35rem 0;font-size:0.78rem;color:var(--text-secondary);line-height:1.6;background:rgba(212,175,55,0.02);border-radius:0 6px 6px 0;}
+.detail-decision strong{color:var(--text-primary);font-size:0.72rem;display:block;margin-bottom:0.18rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;}
+.ai-spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.4rem;}
+.ai-spec{background:var(--black-4);border:1px solid var(--border);border-radius:6px;padding:0.6rem 0.8rem;}
+.ai-spec-key{font-size:0.62rem;font-family:'JetBrains Mono',monospace;color:var(--gold-dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.2rem;}
+.ai-spec-val{font-size:0.74rem;color:var(--text-secondary);line-height:1.5;}
+.what-diff{background:rgba(212,175,55,0.04);border:1px dashed var(--border-hover);border-radius:6px;padding:0.75rem 0.9rem;font-size:0.78rem;color:var(--text-secondary);line-height:1.6;font-style:italic;}
+
+/* ── PASSWORD GATE ── */
+.pwd-gate{position:absolute;inset:0;background:rgba(10,10,10,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.8rem;padding:1.5rem;border-radius:var(--radius);backdrop-filter:blur(4px);}
+.pwd-gate-icon{font-size:2rem;margin-bottom:0.3rem;}
+.pwd-gate-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);}
+.pwd-gate-sub{font-size:0.75rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;}
+.pwd-input{width:100%;max-width:220px;background:var(--black-3);border:1px solid var(--border-hover);border-radius:8px;color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.65rem 1rem;text-align:center;letter-spacing:0.18em;outline:none;}
+.pwd-input:focus{border-color:var(--gold);}
+.pwd-error{font-size:0.72rem;color:#FF6B6B;text-align:center;min-height:1rem;}
+.pwd-submit{background:var(--gold);color:var(--black);border:none;border-radius:6px;padding:0.55rem 1.4rem;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.pwd-submit:hover{background:var(--gold-light);}
+
+/* ── PUBLIC PROJECTS ── */
+.projects-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;}
+.filter-tabs{display:flex;gap:0.35rem;background:var(--black-3);border:1px solid var(--border);border-radius:8px;padding:3px;}
+.filter-tab{padding:0.35rem 0.85rem;border:none;background:transparent;color:var(--text-secondary);font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.filter-tab.active{background:var(--gold);color:var(--black);font-weight:600;}
+.filter-tab:hover:not(.active){color:var(--gold);}
+.layout-toggles{display:flex;gap:0.35rem;}
+.layout-btn{width:32px;height:32px;border:1px solid var(--border);background:var(--black-3);border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:all 0.2s;font-size:0.9rem;}
+.layout-btn.active,.layout-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-glow);}
+#projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.4rem;transition:all 0.3s;}
+#projects-grid.list-view{grid-template-columns:1fr;}
+.project-card{background:var(--black-2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.3s;position:relative;animation:fadeUp 0.5s ease both;}
+.project-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 18px 55px rgba(212,175,55,0.1);}
+.thumb-placeholder{width:100%;height:185px;background:var(--black-3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.thumb-placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--black-4),var(--black-3));}
+.thumb-icon{font-size:2.8rem;position:relative;z-index:1;filter:drop-shadow(0 0 18px var(--gold));}
+.thumb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.06) 1px,transparent 1px);background-size:26px 26px;}
+.card-img{width:100%;height:185px;object-fit:cover;display:block;}
+.thumb-upload-btn{position:absolute;bottom:8px;right:8px;background:rgba(10,10,10,0.88);border:1px solid var(--border-hover);border-radius:6px;color:var(--gold);font-size:0.68rem;font-family:'DM Sans',sans-serif;padding:0.25rem 0.55rem;cursor:pointer;opacity:0;transition:opacity 0.2s;z-index:10;font-weight:500;}
+body.admin-mode .project-card .thumb-upload-btn{display:block;}
+.project-card:hover .thumb-upload-btn{opacity:1;}
+.card-body{padding:1.1rem;}
+.card-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.7rem;}
+.tag{font-size:0.62rem;font-family:'JetBrains Mono',monospace;font-weight:500;padding:0.17rem 0.48rem;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;}
+.tag-ai{background:rgba(212,175,55,0.1);color:var(--gold);border:1px solid rgba(212,175,55,0.2);}
+.tag-agent{background:rgba(100,180,120,0.1);color:#7DD87A;border:1px solid rgba(100,180,120,0.2);}
+.tag-genai{background:rgba(140,120,255,0.1);color:#B89FFF;border:1px solid rgba(140,120,255,0.2);}
+.tag-data{background:rgba(80,180,220,0.1);color:#7BD4F0;border:1px solid rgba(80,180,220,0.2);}
+.tag-rag{background:rgba(255,140,80,0.1);color:#FFB380;border:1px solid rgba(255,140,80,0.2);}
+.tag-mlops{background:rgba(13,115,119,0.15);color:#4EC9C9;border:1px solid rgba(13,115,119,0.25);}
+.card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.42rem;line-height:1.3;}
+.card-desc{font-size:0.8rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.85rem;font-weight:300;}
+.card-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:0.7rem;}
+.card-meta{font-size:0.68rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+.card-links{display:flex;gap:0.45rem;}
+.card-link{font-size:0.7rem;font-weight:600;text-decoration:none;padding:0.26rem 0.6rem;border-radius:5px;transition:all 0.2s;letter-spacing:0.03em;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.card-link-demo{background:var(--gold);color:var(--black);}
+.card-link-demo:hover{background:var(--gold-light);}
+.card-link-edit{background:var(--black-4);color:var(--text-secondary);border:1px solid var(--border);}
+.card-link-edit:hover{border-color:var(--gold);color:var(--gold);}
+.add-card{background:var(--black-2);border:1px dashed var(--border-hover);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;cursor:pointer;transition:all 0.3s;gap:0.9rem;color:var(--text-muted);display:none;}
+body.admin-mode .add-card{display:flex;}
+.add-card:hover{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);}
+.add-card-icon{font-size:1.7rem;}
+.add-card-label{font-size:0.8rem;font-weight:500;letter-spacing:0.05em;}
+#projects-grid.list-view .project-card{display:flex;flex-direction:row;}
+#projects-grid.list-view .thumb-placeholder,#projects-grid.list-view .card-img{width:170px;min-width:170px;height:auto;}
+#projects-grid.list-view .card-body{flex:1;}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:0.95rem;}
+.skill-card{background:var(--black-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.05rem;transition:all 0.2s;position:relative;}
+.skill-card:hover{border-color:var(--gold);background:var(--black-3);}
+.skill-icon{font-size:1.5rem;margin-bottom:0.45rem;}
+.skill-name{font-size:0.86rem;font-weight:600;margin-bottom:0.22rem;}
+.skill-level{font-size:0.65rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;margin-bottom:0.5rem;}
+.skill-bar{height:2px;background:var(--black-4);border-radius:10px;overflow:hidden;}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:10px;transition:width 1.2s ease;}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;}
+.avatar-ring{width:165px;height:165px;border-radius:50%;border:2px solid var(--border-hover);padding:4px;position:relative;cursor:pointer;}
+body.admin-mode .avatar-ring:hover::after{content:'Click to change photo';position:absolute;inset:0;background:rgba(0,0,0,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:var(--gold);text-align:center;padding:1rem;}
+.avatar-ring::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--gold);opacity:0.3;animation:spin 10s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:var(--black-3);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.avatar-photo{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.avatar-initials-text{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold);}
+.about-name{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;margin-bottom:0.18rem;}
+.about-role{font-size:0.78rem;color:var(--gold);font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;margin-bottom:1.3rem;}
+.about-text{font-size:0.9rem;color:var(--text-secondary);line-height:1.85;font-weight:300;margin-bottom:1.4rem;}
+.edu-item{display:flex;gap:0.7rem;align-items:flex-start;margin:0.5rem 0;font-size:0.8rem;color:var(--text-secondary);line-height:1.5;}
+.edu-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0;}
+.edu-item strong{color:var(--text-primary);font-weight:500;}
+.contact-links{display:flex;gap:0.65rem;flex-wrap:wrap;margin-top:1.5rem;}
+.contact-link{display:flex;align-items:center;gap:0.4rem;background:var(--black-3);border:1px solid var(--border);border-radius:8px;padding:0.52rem 0.85rem;font-size:0.78rem;color:var(--text-secondary);text-decoration:none;transition:all 0.2s;font-weight:500;}
+.contact-link:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-glow);}
+
+/* ── ALL MODALS ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(8px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--black-2);border:1px solid var(--border-hover);border-radius:var(--radius);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;padding:1.8rem;position:relative;animation:fadeUp 0.3s ease both;}
+.modal-wide{max-width:780px;}
+.modal-close{position:absolute;top:0.9rem;right:0.9rem;background:var(--black-3);border:1px solid var(--border);color:var(--text-secondary);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-close:hover{border-color:var(--gold);color:var(--gold);}
+.modal h3{font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:1.3rem;color:var(--gold);}
+.form-group{margin-bottom:1rem;}
+.form-label{display:block;font-size:0.72rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.32rem;font-family:'JetBrains Mono',monospace;}
+.form-input,.form-textarea,.form-select{width:100%;background:var(--black-3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'DM Sans',sans-serif;font-size:0.86rem;padding:0.62rem 0.88rem;transition:border-color 0.2s;outline:none;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--gold);}
+.form-textarea{min-height:72px;resize:vertical;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.tag-checkboxes{display:flex;gap:0.35rem;flex-wrap:wrap;}
+.tag-checkbox{display:none;}
+.tag-checkbox-label{cursor:pointer;font-size:0.65rem;font-family:'JetBrains Mono',monospace;font-weight:500;padding:0.2rem 0.52rem;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--border);color:var(--text-muted);transition:all 0.2s;user-select:none;}
+.tag-checkbox:checked+.tag-checkbox-label{background:rgba(212,175,55,0.15);border-color:var(--gold);color:var(--gold);}
+.form-actions{display:flex;gap:0.65rem;justify-content:flex-end;margin-top:1.3rem;}
+.btn-cancel{background:var(--black-3);border:1px solid var(--border);color:var(--text-secondary);padding:0.58rem 1.2rem;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.2s;}
+.btn-cancel:hover{border-color:var(--gold);color:var(--gold);}
+.btn-save{background:var(--gold);color:var(--black);border:none;padding:0.58rem 1.45rem;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.btn-save:hover{background:var(--gold-light);}
+.btn-danger{background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.3);color:#FF6B6B;padding:0.58rem 1.2rem;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;cursor:pointer;transition:all 0.2s;}
+.btn-danger:hover{background:rgba(255,80,80,0.2);}
+
+/* ── ADMIN PANEL ── */
+.admin-panel{position:fixed;right:0;top:0;bottom:0;width:320px;background:var(--black-2);border-left:1px solid rgba(78,201,201,0.2);z-index:300;transform:translateX(100%);transition:transform 0.3s ease;overflow-y:auto;}
+.admin-panel.open{transform:translateX(0);}
+.admin-panel-header{padding:1.2rem 1.4rem;border-bottom:1px solid rgba(78,201,201,0.15);background:rgba(78,201,201,0.05);}
+.admin-panel-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--admin-accent);margin-bottom:0.2rem;}
+.admin-panel-sub{font-size:0.7rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+.admin-section{padding:1rem 1.4rem;border-bottom:1px solid var(--border);}
+.admin-section-title{font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--admin-accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;}
+.admin-btn{width:100%;background:var(--black-3);border:1px solid var(--border);color:var(--text-secondary);padding:0.55rem 0.9rem;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;cursor:pointer;text-align:left;transition:all 0.2s;margin-bottom:0.4rem;display:flex;align-items:center;gap:0.6rem;}
+.admin-btn:hover{border-color:var(--admin-accent);color:var(--admin-accent);background:rgba(78,201,201,0.05);}
+.admin-btn-icon{font-size:0.9rem;}
+.admin-logout{background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.2);color:#FF6B6B;width:100%;padding:0.55rem;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;cursor:pointer;margin-top:0.5rem;transition:all 0.2s;}
+.admin-logout:hover{background:rgba(255,80,80,0.15);}
+.admin-toggle{position:fixed;right:0;top:50%;transform:translateY(-50%);background:rgba(78,201,201,0.15);border:1px solid rgba(78,201,201,0.3);border-right:none;color:var(--admin-accent);padding:0.8rem 0.5rem;border-radius:8px 0 0 8px;cursor:pointer;z-index:299;font-size:0.7rem;writing-mode:vertical-lr;letter-spacing:0.1em;font-family:'JetBrains Mono',monospace;transition:all 0.2s;display:none;}
+body.admin-mode .admin-toggle{display:block;}
+.admin-toggle:hover{background:rgba(78,201,201,0.25);}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;text-align:center;padding:2.2rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.78rem;background:var(--black-2);}
+.footer-gold{color:var(--gold);}
+.drag-hint{font-size:0.72rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:0.4rem;}
+.project-card.dragging{opacity:0.4;border-color:var(--gold);}
+.project-card.drag-over{border-color:var(--gold);background:var(--gold-glow);}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px;}
+.divider{height:1px;background:var(--border);margin:1rem 0;}
+
+@media(max-width:768px){
+  nav{padding:0.85rem 1rem;}
+  .nav-links{display:none;}
+  .stat-item{padding:0 1.1rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .case-grid{grid-template-columns:1fr;}
+  .ai-spec-grid{grid-template-columns:1fr;}
+  #projects-grid.list-view .project-card{flex-direction:column;}
+  #projects-grid.list-view .thumb-placeholder,#projects-grid.list-view .card-img{width:100%;height:145px;}
+  .admin-panel{width:100%;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-wrap" href="#">
+    <svg class="logo-svg" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#8B6914;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#1A1A1A;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#0A0A0A;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <!-- Hexagon background -->
+      <polygon points="19,2 35,10.5 35,27.5 19,36 3,27.5 3,10.5" fill="url(#logoGrad2)" stroke="url(#logoGrad)" stroke-width="1.5"/>
+      <!-- A letterform -->
+      <text x="7" y="26" font-family="Playfair Display, serif" font-size="14" font-weight="700" fill="url(#logoGrad)" letter-spacing="-1">AS</text>
+      <!-- Corner accent dots -->
+      <circle cx="19" cy="3.5" r="1.5" fill="#D4AF37" opacity="0.6"/>
+      <circle cx="34" cy="19" r="1.5" fill="#D4AF37" opacity="0.4"/>
+      <circle cx="4" cy="19" r="1.5" fill="#D4AF37" opacity="0.4"/>
+    </svg>
+    <span class="logo-text" id="nav-site-title">amritasharma.ai</span>
+  </a>
+  <div class="nav-links">
+    <a href="#client-projects">Client Work</a>
+    <a href="#projects">AI Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#about" class="nav-cta">Hire Me</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:0.8rem;">
+    <div class="admin-active-badge" id="admin-badge"><div class="admin-dot"></div>Admin Mode</div>
+    <button class="admin-nav-btn" id="admin-nav-btn" onclick="openAdminLogin()">⚙ Admin</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero" class="editable-section" style="position:relative;">
+  <button class="edit-btn" onclick="openHeroEdit()">✎ Edit Hero</button>
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-badge" id="hero-badge-text">Open to Senior AI/Technical PM Roles</div>
+  <h1 class="hero-title">
+    Technical <span class="gold">AI & Data</span><br>Product Manager
+  </h1>
+  <p class="hero-subtitle" id="hero-subtitle">
+    12+ years shipping AI products at enterprise scale. From data scientist to agentic AI platform TPM —
+    I understand the full stack, from model evaluation to roadmap strategy.
+  </p>
+  <p class="hero-narrative" id="hero-narrative">
+    "I've built ML models, owned RAG pipelines and knowledge graphs, and shipped agentic AI systems to 20,000+ enterprise users across 15 countries.
+    My edge is that I understand the technical stack deeply enough to make faster, better product decisions —
+    and build real credibility with engineering and data science teams."
+  </p>
+  <div class="hero-chips" id="hero-chips">
+    <span class="chip">Agentic AI</span><span class="chip">LLMs</span><span class="chip">RAG</span>
+    <span class="chip">Knowledge Graphs</span><span class="chip">LangChain</span><span class="chip">Pinecone</span>
+    <span class="chip">AWS Bedrock</span><span class="chip">GCP Vertex AI</span><span class="chip">LLM Eval</span>
+    <span class="chip">Product Strategy</span><span class="chip">Roadmapping</span><span class="chip">Agile</span>
+  </div>
+  <div class="hero-actions">
+    <a href="#client-projects" class="btn-primary">View Client Work ↓</a>
+    <a id="resume-btn" href="#" class="btn-outline">Download Resume</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar editable-section" style="position:relative;">
+  <button class="edit-btn" onclick="openStatsEdit()">✎ Edit Stats</button>
+  <div class="stat-item"><span class="stat-num" id="stat-1-num">12+</span><span class="stat-label" id="stat-1-lbl">Years Experience</span></div>
+  <div class="stat-item"><span class="stat-num" id="stat-2-num">20K+</span><span class="stat-label" id="stat-2-lbl">Enterprise Users Served</span></div>
+  <div class="stat-item"><span class="stat-num" id="stat-3-num">85%</span><span class="stat-label" id="stat-3-lbl">AI Query Accuracy</span></div>
+  <div class="stat-item"><span class="stat-num" id="stat-4-num">$50M</span><span class="stat-label" id="stat-4-lbl">Incremental Billings</span></div>
+  <div class="stat-item"><span class="stat-num" id="stat-5-num">15</span><span class="stat-label" id="stat-5-lbl">Countries at Launch</span></div>
+</div>
+
+<!-- CLIENT PROJECTS -->
+<div id="client-projects">
+  <div class="client-inner editable-section" style="position:relative;">
+    <button class="edit-btn" onclick="openClientBannerEdit()">✎ Edit Banner</button>
+    <div class="section-label">Client Work</div>
+    <h2 class="section-title">Enterprise AI Case Studies</h2>
+    <div class="lock-badge">🔒 Protected — Password required to view full case studies</div>
+    <div class="client-banner">
+      <div class="client-banner-icon">🤖</div>
+      <div class="client-banner-text" id="client-banner-text">
+        <strong>Delivered AI solutions across 3 enterprise engagements</strong> — spanning agentic AI customer support,
+        GenAI reverse logistics automation, and large-scale data product platforms.
+        All client identifiers have been anonymized. Outcomes in relative terms.
+      </div>
+    </div>
+    <div class="case-grid" id="case-grid"></div>
+    <div id="add-case-btn-wrap" style="margin-top:1.5rem;display:none;">
+      <button class="btn-outline" onclick="openAddCaseModal()" style="font-size:0.82rem;">＋ Add Client Case Study</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Featured AI Projects</h2>
+  <p class="section-desc">Personal and side projects demonstrating hands-on AI capability. Click any card to explore.</p>
+  <div class="projects-toolbar">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterCards('all',this)">All</button>
+      <button class="filter-tab" onclick="filterCards('ai',this)">GenAI</button>
+      <button class="filter-tab" onclick="filterCards('agent',this)">Agentic</button>
+      <button class="filter-tab" onclick="filterCards('rag',this)">RAG</button>
+      <button class="filter-tab" onclick="filterCards('data',this)">Data</button>
+    </div>
+    <div style="display:flex;gap:0.8rem;align-items:center;">
+      <div class="drag-hint" id="drag-hint" style="display:none;">⠿ drag to reorder</div>
+      <div class="layout-toggles">
+        <button class="layout-btn active" title="Grid" onclick="setLayout('grid',this)">⊞</button>
+        <button class="layout-btn" title="List" onclick="setLayout('list',this)">≡</button>
+      </div>
+    </div>
+  </div>
+  <div id="projects-grid"></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--black-2);max-width:100%;padding:5rem 2rem;">
+  <div style="max-width:1200px;margin:0 auto;position:relative;" class="editable-section">
+    <button class="edit-btn" onclick="openAddSkillModal()">＋ Add Skill</button>
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">AI & PM Skill Stack</h2>
+    <p class="section-desc">Tools, frameworks, and methodologies across the full AI product lifecycle.</p>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;position:relative;" class="editable-section">
+      <button class="edit-btn" onclick="triggerAvatarUpload()" style="top:auto;bottom:0;right:0;">📷 Photo</button>
+      <div class="avatar-ring" onclick="if(document.body.classList.contains('admin-mode'))triggerAvatarUpload()">
+        <div class="avatar-inner" id="avatar-inner">
+          <span class="avatar-initials-text" id="avatar-initials">AS</span>
+        </div>
+      </div>
+      <input type="file" id="avatar-file-input" accept="image/*" style="display:none;" onchange="handleAvatarUpload(event)">
+      <div style="text-align:center;">
+        <div class="about-name" id="about-name">Amrita Sharma</div>
+        <div class="about-role" id="about-role">Technical AI/Data PM · 12+ Years</div>
+      </div>
+    </div>
+    <div class="editable-section" style="position:relative;">
+      <button class="edit-btn" onclick="openAboutEdit()">✎ Edit About</button>
+      <p class="about-text" id="about-bio">
+        I'm a Technical AI & Data Product Manager with 12+ years of experience and a foundation in data science and computer science.
+        I've built ML models as a data scientist, owned RAG pipelines and knowledge graphs as a technical PM, and shipped agentic AI systems to 20,000+ enterprise users across 15 countries.
+        My edge is that I understand the technical stack — from model evaluation to agent orchestration — deeply enough to make faster, better product decisions and build real credibility with engineering and data science teams.
+      </p>
+      <div style="margin-bottom:1.4rem;">
+        <div class="section-label" style="font-size:0.62rem;margin-bottom:0.5rem;">Education</div>
+        <div id="edu-list">
+          <div class="edu-item"><div class="edu-dot"></div><div><strong>Carnegie Mellon University, Heinz College</strong><br>MS, Information Systems Management — Business Intelligence & Data Analytics</div></div>
+          <div class="edu-item"><div class="edu-dot"></div><div><strong>Indian Institute of Management (IIM), Mumbai</strong><br>MBA, Business Administration</div></div>
+          <div class="edu-item"><div class="edu-dot"></div><div><strong>Bhilai Institute of Technology</strong><br>BS, Computer Science</div></div>
+        </div>
+      </div>
+      <div class="contact-links" id="contact-links">
+        <a href="#" id="link-email" class="contact-link">📧 Email</a>
+        <a href="#" id="link-linkedin" class="contact-link">💼 LinkedIn</a>
+        <a href="#" id="link-github" class="contact-link">🐙 GitHub</a>
+        <a href="#" id="link-resume" class="contact-link">📄 Resume PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built with HTML · Deploy free on <span class="footer-gold">GitHub Pages · Netlify · Vercel</span> · Details anonymized per confidentiality obligations · © 2025 Amrita Sharma
+</footer>
+
+<!-- ADMIN SIDE PANEL -->
+<button class="admin-toggle" id="admin-toggle" onclick="toggleAdminPanel()">ADMIN</button>
+<div class="admin-panel" id="admin-panel">
+  <div class="admin-panel-header">
+    <div class="admin-panel-title">⚙ Admin Panel</div>
+    <div class="admin-panel-sub">Full edit mode active</div>
+  </div>
+  <div class="admin-section">
+    <div class="admin-section-title">Hero & Navigation</div>
+    <button class="admin-btn" onclick="openHeroEdit()"><span class="admin-btn-icon">🏠</span>Edit Hero Section</button>
+    <button class="admin-btn" onclick="openStatsEdit()"><span class="admin-btn-icon">📊</span>Edit Stats Bar</button>
+    <button class="admin-btn" onclick="openNavEdit()"><span class="admin-btn-icon">🔗</span>Edit Nav & Site Title</button>
+  </div>
+  <div class="admin-section">
+    <div class="admin-section-title">Client Work</div>
+    <button class="admin-btn" onclick="openClientBannerEdit()"><span class="admin-btn-icon">📝</span>Edit Banner Text</button>
+    <button class="admin-btn" onclick="openAddCaseModal()"><span class="admin-btn-icon">＋</span>Add Case Study</button>
+    <button class="admin-btn" onclick="openClientPasswordEdit()"><span class="admin-btn-icon">🔒</span>Change Client Password</button>
+  </div>
+  <div class="admin-section">
+    <div class="admin-section-title">AI Projects</div>
+    <button class="admin-btn" onclick="openAddModal()"><span class="admin-btn-icon">＋</span>Add New Project</button>
+  </div>
+  <div class="admin-section">
+    <div class="admin-section-title">Skills</div>
+    <button class="admin-btn" onclick="openAddSkillModal()"><span class="admin-btn-icon">＋</span>Add New Skill</button>
+  </div>
+  <div class="admin-section">
+    <div class="admin-section-title">About & Profile</div>
+    <button class="admin-btn" onclick="openAboutEdit()"><span class="admin-btn-icon">👤</span>Edit Bio & Links</button>
+    <button class="admin-btn" onclick="triggerAvatarUpload()"><span class="admin-btn-icon">📷</span>Change Profile Photo</button>
+  </div>
+  <div class="admin-section">
+    <div class="admin-section-title">Password</div>
+    <button class="admin-btn" onclick="openAdminPasswordChange()"><span class="admin-btn-icon">🔑</span>Change Admin Password</button>
+  </div>
+  <div style="padding:1rem 1.4rem;">
+    <button class="admin-logout" onclick="adminLogout()">↩ Exit Admin Mode</button>
+  </div>
+</div>
+
+<!-- ══ ALL MODALS ══ -->
+
+<!-- ADMIN LOGIN -->
+<div class="modal-overlay" id="admin-login-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('admin-login-modal')">✕</button>
+    <h3>⚙ Admin Login</h3>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.4rem;font-family:'JetBrains Mono',monospace;">Enter your admin password to unlock full edit capabilities.</p>
+    <div class="form-group">
+      <label class="form-label">Admin Password</label>
+      <input class="form-input" type="password" id="admin-pwd-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()">
+    </div>
+    <div id="admin-pwd-error" style="font-size:0.78rem;color:#FF6B6B;margin-top:0.3rem;display:none;">Incorrect password. Try again.</div>
+    <div class="form-actions">
+      <button class="btn-cancel" onclick="closeModal('admin-login-modal')">Cancel</button>
+      <button class="btn-save" onclick="doAdminLogin()">Login →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO EDIT -->
+<div class="modal-overlay" id="hero-edit-modal">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeModal('hero-edit-modal')">✕</button>
+    <h3>✎ Edit Hero Section</h3>
+    <div class="form-group"><label class="form-label">Badge Text</label><input class="form-input" id="he-badge" value="Open to Senior AI/Technical PM Roles"></div>
+    <div class="form-group"><label class="form-label">Subtitle</label><textarea class="form-textarea" id="he-subtitle"></textarea></div>
+    <div class="form-group"><label class="form-label">Narrative Quote</label><textarea class="form-textarea" id="he-narrative" style="min-height:90px;"></textarea></div>
+    <div class="form-group"><label class="form-label">Tech Chips (comma separated)</label><input class="form-input" id="he-chips" placeholder="Agentic AI, LLMs, RAG, ..."></div>
+    <div class="form-group"><label class="form-label">Resume / CV URL</label><input class="form-input" id="he-resume" placeholder="https://..."></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('hero-edit-modal')">Cancel</button><button class="btn-save" onclick="saveHeroEdit()">Save →</button></div>
+  </div>
+</div>
+
+<!-- STATS EDIT -->
+<div class="modal-overlay" id="stats-edit-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('stats-edit-modal')">✕</button>
+    <h3>✎ Edit Stats Bar</h3>
+    <div id="stats-edit-fields"></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('stats-edit-modal')">Cancel</button><button class="btn-save" onclick="saveStatsEdit()">Save →</button></div>
+  </div>
+</div>
+
+<!-- NAV EDIT -->
+<div class="modal-overlay" id="nav-edit-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('nav-edit-modal')">✕</button>
+    <h3>✎ Edit Navigation</h3>
+    <div class="form-group"><label class="form-label">Site Title (shown in nav)</label><input class="form-input" id="nav-title-input" placeholder="amritasharma.ai"></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('nav-edit-modal')">Cancel</button><button class="btn-save" onclick="saveNavEdit()">Save →</button></div>
+  </div>
+</div>
+
+<!-- CLIENT BANNER EDIT -->
+<div class="modal-overlay" id="client-banner-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('client-banner-modal')">✕</button>
+    <h3>✎ Edit Client Banner</h3>
+    <div class="form-group"><label class="form-label">Banner Text (HTML allowed)</label><textarea class="form-textarea" id="cb-text" style="min-height:100px;"></textarea></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('client-banner-modal')">Cancel</button><button class="btn-save" onclick="saveClientBanner()">Save →</button></div>
+  </div>
+</div>
+
+<!-- CLIENT PASSWORD CHANGE -->
+<div class="modal-overlay" id="client-pwd-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('client-pwd-modal')">✕</button>
+    <h3>🔒 Change Client Project Password</h3>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.6;">This single password protects all client case studies — existing and any you add in future.</p>
+    <div class="form-group"><label class="form-label">New Password</label><input class="form-input" type="text" id="new-client-pwd" placeholder="Enter new password"></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('client-pwd-modal')">Cancel</button><button class="btn-save" onclick="saveClientPassword()">Save →</button></div>
+  </div>
+</div>
+
+<!-- ADD/EDIT CASE STUDY -->
+<div class="modal-overlay" id="case-modal">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeModal('case-modal')">✕</button>
+    <h3 id="case-modal-title">Add Client Case Study</h3>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Project Title</label><input class="form-input" id="cs-title" placeholder="e.g. Agentic AI Support Platform"></div>
+      <div class="form-group"><label class="form-label">Role & Duration</label><input class="form-input" id="cs-role" placeholder="e.g. TPM · 1.5 years"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Tags</label>
+      <div class="tag-checkboxes">
+        <input type="checkbox" class="tag-checkbox" id="cs-t-ai" value="ai"><label class="tag-checkbox-label tag-ai" for="cs-t-ai">GenAI</label>
+        <input type="checkbox" class="tag-checkbox" id="cs-t-agent" value="agent"><label class="tag-checkbox-label tag-agent" for="cs-t-agent">Agentic</label>
+        <input type="checkbox" class="tag-checkbox" id="cs-t-genai" value="genai"><label class="tag-checkbox-label tag-genai" for="cs-t-genai">LLM</label>
+        <input type="checkbox" class="tag-checkbox" id="cs-t-data" value="data"><label class="tag-checkbox-label tag-data" for="cs-t-data">Data</label>
+        <input type="checkbox" class="tag-checkbox" id="cs-t-rag" value="rag"><label class="tag-checkbox-label tag-rag" for="cs-t-rag">RAG</label>
+        <input type="checkbox" class="tag-checkbox" id="cs-t-mlops" value="mlops"><label class="tag-checkbox-label tag-mlops" for="cs-t-mlops">MLOps</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Metric 1 Value</label><input class="form-input" id="cs-m1v" placeholder="85%"></div>
+      <div class="form-group"><label class="form-label">Metric 1 Label</label><input class="form-input" id="cs-m1l" placeholder="Query Accuracy"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Metric 2 Value</label><input class="form-input" id="cs-m2v" placeholder="40%"></div>
+      <div class="form-group"><label class="form-label">Metric 2 Label</label><input class="form-input" id="cs-m2l" placeholder="Ticket Automation"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Metric 3 Value</label><input class="form-input" id="cs-m3v" placeholder="-20%"></div>
+      <div class="form-group"><label class="form-label">Metric 3 Label</label><input class="form-input" id="cs-m3l" placeholder="Resolution Time"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Problem Statement</label><textarea class="form-textarea" id="cs-problem" style="min-height:80px;"></textarea></div>
+    <div class="form-group"><label class="form-label">Your Role & Constraints</label><textarea class="form-textarea" id="cs-roledetail"></textarea></div>
+    <div class="form-group"><label class="form-label">Key Decisions (one per line, format: Decision Title | Description)</label><textarea class="form-textarea" id="cs-decisions" style="min-height:80px;" placeholder="Multi-agent architecture | Chose 8+ agents because...&#10;RAG over fine-tuning | Fine-tuning would have required..."></textarea></div>
+    <div class="form-group"><label class="form-label">Tech Stack</label><input class="form-input" id="cs-stack" placeholder="LangChain · Pinecone · AWS Bedrock"></div>
+    <div class="form-group"><label class="form-label">What I'd Do Differently</label><textarea class="form-textarea" id="cs-diff"></textarea></div>
+    <div class="form-actions">
+      <button class="btn-danger" id="cs-delete-btn" onclick="deleteCase()" style="display:none;">Delete</button>
+      <button class="btn-cancel" onclick="closeModal('case-modal')">Cancel</button>
+      <button class="btn-save" onclick="saveCaseStudy()">Save →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD/EDIT PROJECT -->
+<div class="modal-overlay" id="project-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('project-modal')">✕</button>
+    <h3 id="modal-title">Add New Project</h3>
+    <div class="form-group"><label class="form-label">Project Title</label><input class="form-input" id="f-title" placeholder="e.g. AI Recommendation Engine"></div>
+    <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" id="f-desc" placeholder="What does it do? What AI/tech? What was your role?"></textarea></div>
+    <div class="form-group"><label class="form-label">Tags</label>
+      <div class="tag-checkboxes">
+        <input type="checkbox" class="tag-checkbox" id="t-ai" value="ai"><label class="tag-checkbox-label tag-ai" for="t-ai">GenAI</label>
+        <input type="checkbox" class="tag-checkbox" id="t-agent" value="agent"><label class="tag-checkbox-label tag-agent" for="t-agent">Agentic</label>
+        <input type="checkbox" class="tag-checkbox" id="t-genai" value="genai"><label class="tag-checkbox-label tag-genai" for="t-genai">LLM</label>
+        <input type="checkbox" class="tag-checkbox" id="t-data" value="data"><label class="tag-checkbox-label tag-data" for="t-data">Data</label>
+        <input type="checkbox" class="tag-checkbox" id="t-rag" value="rag"><label class="tag-checkbox-label tag-rag" for="t-rag">RAG</label>
+        <input type="checkbox" class="tag-checkbox" id="t-mlops" value="mlops"><label class="tag-checkbox-label tag-mlops" for="t-mlops">MLOps</label>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">Thumbnail Image</label><input type="file" accept="image/*" id="f-thumb" class="form-input" style="padding:0.32rem;"><div style="font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem;">Upload screenshot, diagram, or architecture image</div></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Demo URL</label><input class="form-input" id="f-demo" placeholder="https://..."></div>
+      <div class="form-group"><label class="form-label">GitHub URL</label><input class="form-input" id="f-github" placeholder="https://github.com/..."></div>
+    </div>
+    <div class="form-group"><label class="form-label">Year</label><input class="form-input" id="f-year" placeholder="2025"></div>
+    <div class="form-actions">
+      <button class="btn-danger" id="proj-delete-btn" onclick="deleteProject()" style="display:none;">Delete</button>
+      <button class="btn-cancel" onclick="closeModal('project-modal')">Cancel</button>
+      <button class="btn-save" onclick="saveProject()">Save →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD/EDIT SKILL -->
+<div class="modal-overlay" id="skill-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('skill-modal')">✕</button>
+    <h3 id="skill-modal-title">Add Skill</h3>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Icon (emoji)</label><input class="form-input" id="sk-icon" placeholder="🤖"></div>
+      <div class="form-group"><label class="form-label">Skill Name</label><input class="form-input" id="sk-name" placeholder="LLM Evaluation"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Level Label</label><input class="form-input" id="sk-level" placeholder="Expert"></div>
+      <div class="form-group"><label class="form-label">Proficiency % (0-100)</label><input class="form-input" type="number" id="sk-pct" min="0" max="100" placeholder="90"></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-danger" id="sk-delete-btn" onclick="deleteSkill()" style="display:none;">Delete</button>
+      <button class="btn-cancel" onclick="closeModal('skill-modal')">Cancel</button>
+      <button class="btn-save" onclick="saveSkill()">Save →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT EDIT -->
+<div class="modal-overlay" id="about-edit-modal">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeModal('about-edit-modal')">✕</button>
+    <h3>✎ Edit About Section</h3>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="ae-name" placeholder="Amrita Sharma"></div>
+      <div class="form-group"><label class="form-label">Role Tagline</label><input class="form-input" id="ae-role" placeholder="Technical AI/Data PM"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Bio</label><textarea class="form-textarea" id="ae-bio" style="min-height:110px;"></textarea></div>
+    <div class="form-group"><label class="form-label">Education (one per line: School | Degree)</label><textarea class="form-textarea" id="ae-edu" style="min-height:80px;" placeholder="Carnegie Mellon University | MS Information Systems&#10;IIM Mumbai | MBA"></textarea></div>
+    <div class="divider"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="ae-email" placeholder="mailto:you@email.com"></div>
+      <div class="form-group"><label class="form-label">LinkedIn URL</label><input class="form-input" id="ae-linkedin" placeholder="https://linkedin.com/in/..."></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">GitHub URL</label><input class="form-input" id="ae-github" placeholder="https://github.com/..."></div>
+      <div class="form-group"><label class="form-label">Resume PDF URL</label><input class="form-input" id="ae-resume" placeholder="https://..."></div>
+    </div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('about-edit-modal')">Cancel</button><button class="btn-save" onclick="saveAboutEdit()">Save →</button></div>
+  </div>
+</div>
+
+<!-- ADMIN PASSWORD CHANGE -->
+<div class="modal-overlay" id="admin-pwd-change-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('admin-pwd-change-modal')">✕</button>
+    <h3>🔑 Change Admin Password</h3>
+    <div class="form-group"><label class="form-label">Current Password</label><input class="form-input" type="password" id="apc-current"></div>
+    <div class="form-group"><label class="form-label">New Password</label><input class="form-input" type="password" id="apc-new"></div>
+    <div id="apc-error" style="font-size:0.78rem;color:#FF6B6B;display:none;margin-top:0.3rem;"></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal('admin-pwd-change-modal')">Cancel</button><button class="btn-save" onclick="saveAdminPassword()">Save →</button></div>
+  </div>
+</div>
+
+<!-- UNLOCK CASE STUDY MODAL -->
+<div class="modal-overlay" id="unlock-modal">
+  <div class="modal" style="max-width:380px;text-align:center;">
+    <button class="modal-close" onclick="closeModal('unlock-modal')">✕</button>
+    <div style="font-size:2rem;margin-bottom:0.6rem;">🔒</div>
+    <h3 style="margin-bottom:0.4rem;">Protected Case Study</h3>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.4rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;">Enter the recruiter password to view</p>
+    <div class="form-group">
+      <input class="form-input" type="password" id="unlock-pwd-input" placeholder="••••••••" style="text-align:center;letter-spacing:0.18em;font-size:1rem;" onkeydown="if(event.key==='Enter')doUnlock()">
+    </div>
+    <div id="unlock-pwd-error" style="font-size:0.78rem;color:#FF6B6B;min-height:1.2rem;margin-bottom:0.6rem;display:none;">Incorrect password — try again</div>
+    <div class="form-actions" style="justify-content:center;">
+      <button class="btn-cancel" onclick="closeModal('unlock-modal')">Cancel</button>
+      <button class="btn-save" onclick="doUnlock()">Unlock →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════
+let ADMIN_PASSWORD = "admin2025";
+let CLIENT_PASSWORD = "portfolio2025";
+let isAdminMode = false;
+let editingProjectId = null;
+let editingSkillIdx = null;
+let editingCaseId = null;
+let activeFilter = "all";
+let unlockedCards = new Set();
+
+// ── CASE STUDIES ──
+let caseStudies = [
+  {
+    id:"cs1", title:"Agentic AI Customer Support Platform",
+    role:"Technical Product Manager · 1.5 years",
+    tags:["agent","rag","ai","genai"],
+    metrics:[{val:"85%",label:"Query Accuracy"},{val:"40%",label:"Ticket Automation"},{val:"-20%",label:"Resolution Time"}],
+    problem:"A global PC manufacturer's support org spanning 20,000+ agents across 15 countries faced degrading performance on a keyword-only knowledge base. Query accuracy had fallen to 70% and resolution times were failing SLA commitments. Manual ticket triage was 100% of inbound volume, creating routing delays and inconsistent customer experiences.",
+    roledetail:"Solo TPM owning end-to-end product strategy, roadmap, agent architecture design, eval framework, and KPIs. Worked across AI engineers, architects, and data scientists. Responsible for phased rollout from 50-agent pilot to 20,000+ enterprise deployment.",
+    decisions:[
+      {label:"Multi-agent over single-agent",text:"Chose 8+ specialized agents over a single general-purpose agent. Tradeoff: higher orchestration complexity, but dramatically higher accuracy on domain-specific tasks. A general agent degraded at scale."},
+      {label:"RAG + Knowledge Graph over fine-tuning",text:"Fine-tuning would require retraining every time the KB updated. RAG with LLM-powered knowledge graph gave real-time updatability, traceable retrieval, and hallucination mitigation."},
+      {label:"Phased rollout with eval gates",text:"50-agent pilot before enterprise rollout with defined go/no-go criteria: ≥85% intent accuracy, escalation rate ≤15%, latency <3s P95."},
+      {label:"85% as the ship threshold",text:"At 85% accuracy with human escalation safety net, marginal harm from incorrect suggestions was contained. Argued against waiting for 90%+ — diminishing returns on the offline eval."}
+    ],
+    ai_specs:[
+      {key:"Architecture",val:"Multi-agent (8+ agents), LLM-powered knowledge graph, RAG pipeline, orchestration layer, microservices"},
+      {key:"Retrieval",val:"Vector DB (Pinecone), hybrid dense + sparse search, top-K ranking with metadata filters"},
+      {key:"Eval I owned",val:"Intent accuracy, resolution success rate, latency P95, escalation rate, coverage, coherence, consistency"},
+      {key:"Ship criteria",val:"≥85% accuracy on 500-query holdout, <3s P95 latency at load, zero P0s in pilot QA sweep"}
+    ],
+    diff:"Would invest earlier in a feature store. Rebuilt feature pipelines 3 times due to unstandardized inputs — cost ~6 weeks.",
+    stack:"LangChain · Pinecone · AWS Bedrock · GCP AgentSpace · Python · LLM APIs"
+  },
+  {
+    id:"cs2", title:"GenAI Reverse Logistics Automation",
+    role:"Technical Program Manager · 4 months",
+    tags:["genai","ai"],
+    metrics:[{val:"-30%",label:"Human Effort"},{val:"4 mo",label:"0→Production"},{val:"Faster",label:"Resolution Cycles"}],
+    problem:"A global networking company's reverse logistics process for evaluating returned goods was almost entirely manual. Each returned unit required human assessment, creating bottlenecks that slowed resolution cycles and tied up working capital.",
+    roledetail:"Owned end-to-end AI program lifecycle: requirements gathering, sprint planning, stakeholder alignment, scope management. Delivered production-ready GenAI solution in 4 months using Agile delivery.",
+    decisions:[
+      {label:"Scope to top-3 return categories",text:"Scoped to highest-volume return categories (70% of returns) rather than full catalog at lower quality. Proved model at 95% quality on 3 categories vs 70% on all 20."},
+      {label:"Stakeholder alignment on mid-cycle scope change",text:"Requirements shifted mid-sprint. Re-scoped explicitly — documented the tradeoff and got written sign-off from sponsor to avoid scope creep."}
+    ],
+    ai_specs:[
+      {key:"Approach",val:"GenAI for unstructured data extraction and disposition classification from technician notes and diagnostic outputs"},
+      {key:"Eval",val:"Accuracy on held-out labeled returns, human approval rate, processing cycle time"},
+      {key:"Failure modes",val:"Incorrect scrap disposition (revenue loss), overconfident recommendations on rare SKUs, model drift"}
+    ],
+    diff:"Would conduct a returns data quality audit in week 1. Technician note quality varied significantly by region — discovered mid-project.",
+    stack:"Generative AI APIs · Python · Agile delivery · Enterprise integration"
+  },
+  {
+    id:"cs3", title:"Payments Data Product — $50M Commerce Platform",
+    role:"Data Product Manager · 4.5 years",
+    tags:["data","mlops"],
+    metrics:[{val:"$50M",label:"Incremental Billings"},{val:"1B+",label:"Transactions Analyzed"},{val:"50→2%",label:"Data Discrepancy"}],
+    problem:"The Wallet, Payments & Commerce analytics team had no unified view of the customer transaction journey across 7 lines of business. Drop-off points were invisible, teams operated on siloed dashboards, and there was no early warning system for data anomalies.",
+    roledetail:"Data Product Manager owning end-to-end lifecycle: PRD authoring, 30+ metric definitions, data pipeline requirements, BI dashboard wireframes, and cross-functional privacy reviews.",
+    decisions:[
+      {label:"Metric design — measuring what matters",text:"Chose add-to-cart rate over click rate as primary conversion metric. Click rate would have gamed the funnel without driving billings."},
+      {label:"Data quality overhaul — 50% → 2%",text:"Redesigned validation processes end-to-end. Built tiered anomaly alert framework (P0/P1/P2). Eliminated bad data that was causing product teams to make wrong decisions."},
+      {label:"Privacy-first feature reviews",text:"Drove cross-functional privacy reviews quantifying business impact vs compliance risk. Got approvals that enabled on-time launches."}
+    ],
+    ai_specs:[
+      {key:"Scale",val:"1B+ transactions, 300M customers, 7 lines of business in one unified funnel"},
+      {key:"Data Quality",val:"Automated validation, anomaly detection alerts, 50%→2% discrepancy reduction"},
+      {key:"ML connection",val:"Pipelines fed downstream ML models including fraud detection and recommendations"},
+      {key:"Tooling",val:"Python · SQL · PySpark · Trino · Teradata · Tableau · AWS · Splunk"}
+    ],
+    diff:"Defined feature criticality with the data science team too late. Spent 4 weeks on low-impact pipelines while high-risk ML-feeding pipelines had basic coverage.",
+    stack:"Python · SQL · PySpark · Tableau · Trino · Teradata · AWS · Splunk"
+  }
+];
+
+// ── PROJECTS ──
+let projects = [
+  {id:1,title:"PRD: Agentic AI Support Platform",desc:"Full product requirements document for an enterprise-scale multi-agent AI support system — 8+ specialized agents, RAG pipeline, eval framework, rollout gates, and risk register.",tags:["agent","rag","ai","genai"],demo:"",github:"",year:"2025",thumb:null},
+  {id:2,title:"LLM Eval Framework Template",desc:"Reusable evaluation framework: 10 eval dimensions (intent accuracy, hallucination rate, retrieval recall, latency P95, CSAT), benchmark construction methodology, and ship criteria templates.",tags:["ai","genai"],demo:"",github:"",year:"2025",thumb:null},
+  {id:3,title:"RAG Knowledge Base Assistant",desc:"Retrieval-Augmented Generation system over internal docs. Semantic search, confidence scoring, source citation enforcement, and graceful fallback for low-confidence retrievals.",tags:["rag","ai","genai"],demo:"",github:"",year:"2025",thumb:null},
+  {id:4,title:"Data Quality Monitoring Dashboard",desc:"ML pipeline health monitoring: statistical distribution drift detection (K-S test), tiered alerting (P0/P1/P2), and weekly gap reports. Solves the silent model degradation problem.",tags:["data","mlops"],demo:"",github:"",year:"2024",thumb:null},
+  {id:5,title:"AI Meeting Summarizer",desc:"Transcribes meetings via Whisper, extracts action items with LLM, syncs to Notion/Jira. Reduces ~2hrs/week per team member. Entity extraction for owners, deadlines, blockers.",tags:["ai","genai","agent"],demo:"",github:"",year:"2025",thumb:null},
+  {id:6,title:"Retail Forecasting ML Model",desc:"Replaced legacy forecasting system with ML model generating $1M in quarterly savings. Time-series modeling and feature engineering with documented product team recommendations.",tags:["data","ai"],demo:"",github:"",year:"2022",thumb:null}
+];
+
+// ── SKILLS ──
+let skills = [
+  {icon:"🤖",name:"Agentic AI Design",level:"Advanced",pct:90},
+  {icon:"🔍",name:"RAG Systems",level:"Advanced",pct:88},
+  {icon:"🧠",name:"LLM Evaluation",level:"Expert",pct:92},
+  {icon:"🔗",name:"Knowledge Graphs",level:"Advanced",pct:82},
+  {icon:"⚡",name:"LangChain / LlamaIndex",level:"Proficient",pct:75},
+  {icon:"📦",name:"AWS Bedrock / SageMaker",level:"Proficient",pct:72},
+  {icon:"☁️",name:"GCP Vertex AI / AgentSpace",level:"Proficient",pct:70},
+  {icon:"🐍",name:"Python / PySpark / SQL",level:"Proficient",pct:78},
+  {icon:"📊",name:"Product Strategy",level:"Expert",pct:95},
+  {icon:"🗺️",name:"Roadmapping & PRDs",level:"Expert",pct:96},
+  {icon:"🎯",name:"Stakeholder Management",level:"Expert",pct:93},
+  {icon:"⚙️",name:"Agile / Scrum",level:"Expert",pct:95},
+  {icon:"📈",name:"Data Products & Analytics",level:"Expert",pct:90},
+  {icon:"🔬",name:"ML / Data Science",level:"Proficient",pct:76}
+];
+
+const tagColors={ai:"tag-ai",agent:"tag-agent",genai:"tag-genai",data:"tag-data",rag:"tag-rag",mlops:"tag-mlops"};
+const tagLabels={ai:"GenAI",agent:"Agentic",genai:"LLM",data:"Data",rag:"RAG",mlops:"MLOps"};
+const cardIcons={ai:"🤖",agent:"⚡",rag:"🔍",data:"📊",mlops:"🔧",default:"✨"};
+
+// ════════════════════════════════════════════════════════
+// ADMIN
+// ════════════════════════════════════════════════════════
+function openAdminLogin(){
+  document.getElementById("admin-pwd-input").value="";
+  document.getElementById("admin-pwd-error").style.display="none";
+  openModal("admin-login-modal");
+}
+function doAdminLogin(){
+  const pwd=document.getElementById("admin-pwd-input").value;
+  if(pwd===ADMIN_PASSWORD){
+    isAdminMode=true;
+    document.body.classList.add("admin-mode");
+    document.getElementById("admin-badge").classList.add("show");
+    document.getElementById("admin-nav-btn").textContent="⚙ Admin ✓";
+    document.getElementById("admin-toggle").style.display="block";
+    document.getElementById("add-case-btn-wrap").style.display="block";
+    document.getElementById("drag-hint").style.display="flex";
+    closeModal("admin-login-modal");
+    renderProjects();
+  } else {
+    document.getElementById("admin-pwd-error").style.display="block";
+  }
+}
+function adminLogout(){
+  isAdminMode=false;
+  document.body.classList.remove("admin-mode");
+  document.getElementById("admin-badge").classList.remove("show");
+  document.getElementById("admin-nav-btn").textContent="⚙ Admin";
+  document.getElementById("admin-panel").classList.remove("open");
+  document.getElementById("add-case-btn-wrap").style.display="none";
+  document.getElementById("drag-hint").style.display="none";
+  renderProjects();
+}
+function toggleAdminPanel(){
+  document.getElementById("admin-panel").classList.toggle("open");
+}
+function openAdminPasswordChange(){
+  document.getElementById("apc-current").value="";
+  document.getElementById("apc-new").value="";
+  document.getElementById("apc-error").style.display="none";
+  openModal("admin-pwd-change-modal");
+}
+function saveAdminPassword(){
+  const cur=document.getElementById("apc-current").value;
+  const nw=document.getElementById("apc-new").value;
+  if(cur!==ADMIN_PASSWORD){document.getElementById("apc-error").textContent="Current password incorrect.";document.getElementById("apc-error").style.display="block";return;}
+  if(!nw){document.getElementById("apc-error").textContent="New password cannot be empty.";document.getElementById("apc-error").style.display="block";return;}
+  ADMIN_PASSWORD=nw;
+  closeModal("admin-pwd-change-modal");
+  alert("Admin password updated!");
+}
+
+// ════════════════════════════════════════════════════════
+// MODALS
+// ════════════════════════════════════════════════════════
+function openModal(id){document.getElementById(id).classList.add("open");}
+function closeModal(id){document.getElementById(id).classList.remove("open");}
+document.addEventListener("click",e=>{if(e.target.classList.contains("modal-overlay"))e.target.classList.remove("open");});
+
+// ════════════════════════════════════════════════════════
+// CASE STUDIES
+// ════════════════════════════════════════════════════════
+function renderCaseStudies(){
+  const grid=document.getElementById("case-grid");
+  grid.innerHTML=caseStudies.map(cs=>{
+    const tagHTML=cs.tags.map(t=>`<span class="tag ${tagColors[t]||"tag-ai"}">${tagLabels[t]||t}</span>`).join("");
+    const metricsHTML=cs.metrics.map(m=>`<div class="cm"><div class="cm-val">${m.val}</div><div class="cm-label">${m.label}</div></div>`).join("");
+    const decisionsHTML=(cs.decisions||[]).map(d=>`<div class="detail-decision"><strong>↗ ${d.label}</strong>${d.text}</div>`).join("");
+    const aiSpecHTML=(cs.ai_specs||[]).map(s=>`<div class="ai-spec"><div class="ai-spec-key">${s.key}</div><div class="ai-spec-val">${s.val}</div></div>`).join("");
+    const isUnlocked=unlockedCards.has(cs.id)||isAdminMode;
+    const editBtn=isAdminMode?`<button class="case-expand-btn" style="margin-right:0.4rem;border-color:var(--admin-accent);color:var(--admin-accent);" onclick="openEditCase(event,'${cs.id}')">✎ Edit</button>`:"";
+    return`<div class="case-card" style="position:relative;">
+      <div class="case-card-header">
+        <div class="case-card-tags">${tagHTML}</div>
+        <div class="case-card-title">${cs.title}</div>
+      </div>
+      <p class="case-card-desc">${(cs.problem||"").substring(0,150)}…</p>
+      <div class="case-metrics">${metricsHTML}</div>
+      <div class="case-card-footer">
+        <span class="case-year">${cs.role}</span>
+        <div style="display:flex;gap:0.4rem;">${editBtn}<button class="case-expand-btn" onclick="handleCaseClick('${cs.id}',this)">${isUnlocked?"Read Case Study ↓":"🔒 Unlock"}</button></div>
+      </div>
+      ${isUnlocked?`<div class="case-detail" id="detail-${cs.id}">
+        <div class="conf-note">🔒 Anonymized — client identity & proprietary details generalized</div>
+        <div style="margin-bottom:1rem;"><div class="detail-label">Problem</div><div class="detail-text">${cs.problem}</div></div>
+        <div style="margin-bottom:1rem;"><div class="detail-label">My Role & Constraints</div><div class="detail-text">${cs.roledetail}</div></div>
+        <div style="margin-bottom:1rem;"><div class="detail-label">Key Decisions I Made</div>${decisionsHTML}</div>
+        ${aiSpecHTML?`<div style="margin-bottom:1rem;"><div class="detail-label">AI / ML Specifics</div><div class="ai-spec-grid">${aiSpecHTML}</div></div>`:""}
+        <div style="margin-bottom:1rem;"><div class="detail-label">Tech Stack</div><div class="detail-text" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--gold-dim);">${cs.stack}</div></div>
+        <div><div class="detail-label">What I'd Do Differently</div><div class="what-diff">${cs.diff}</div></div>
+      </div>`:""}
+    </div>`;
+  }).join("");
+  // Re-attach expand toggles
+  caseStudies.forEach(cs=>{
+    const detail=document.getElementById("detail-"+cs.id);
+    if(detail)detail.style.display="none";
+  });
+}
+
+let pendingUnlockId = null;
+
+function handleCaseClick(id,btn){
+  if(isAdminMode||unlockedCards.has(id)){toggleCase(id,btn);return;}
+  pendingUnlockId = id;
+  document.getElementById("unlock-pwd-input").value="";
+  document.getElementById("unlock-pwd-error").style.display="none";
+  openModal("unlock-modal");
+  setTimeout(()=>document.getElementById("unlock-pwd-input").focus(),100);
+}
+
+function doUnlock(){
+  const pwd=document.getElementById("unlock-pwd-input").value;
+  const errEl=document.getElementById("unlock-pwd-error");
+  if(pwd===CLIENT_PASSWORD){
+    errEl.style.display="none";
+    unlockedCards.add(pendingUnlockId);
+    closeModal("unlock-modal");
+    renderCaseStudies();
+    setTimeout(()=>{
+      const btn=document.querySelector('[onclick="handleCaseClick(\''+pendingUnlockId+'\',this)"]');
+      if(btn)toggleCase(pendingUnlockId,btn);
+      pendingUnlockId=null;
+    },80);
+  } else {
+    errEl.style.display="block";
+    document.getElementById("unlock-pwd-input").value="";
+    document.getElementById("unlock-pwd-input").focus();
+  }
+}
+
+function toggleCase(id,btn){
+  const detail=document.getElementById("detail-"+id);
+  if(!detail)return;
+  const open=detail.style.display==="block";
+  detail.style.display=open?"none":"block";
+  btn.textContent=open?"Read Case Study ↓":"Close ↑";
+}
+
+function openClientPasswordEdit(){openModal("client-pwd-modal");}
+function saveClientPassword(){
+  const p=document.getElementById("new-client-pwd").value.trim();
+  if(!p){alert("Password cannot be empty.");return;}
+  CLIENT_PASSWORD=p;
+  closeModal("client-pwd-modal");
+  alert("Client project password updated! All existing and new case studies now use: "+p);
+}
+
+// ── ADD/EDIT CASE ──
+let editingCase=null;
+function openAddCaseModal(){
+  editingCase=null;
+  document.getElementById("case-modal-title").textContent="Add Client Case Study";
+  document.getElementById("cs-delete-btn").style.display="none";
+  ["cs-title","cs-role","cs-m1v","cs-m1l","cs-m2v","cs-m2l","cs-m3v","cs-m3l","cs-problem","cs-roledetail","cs-decisions","cs-stack","cs-diff"].forEach(id=>document.getElementById(id).value="");
+  document.querySelectorAll("[id^='cs-t-']").forEach(c=>c.checked=false);
+  openModal("case-modal");
+}
+function openEditCase(e,id){
+  e.stopPropagation();
+  editingCase=id;
+  const cs=caseStudies.find(c=>c.id===id);
+  document.getElementById("case-modal-title").textContent="Edit Case Study";
+  document.getElementById("cs-delete-btn").style.display="block";
+  document.getElementById("cs-title").value=cs.title;
+  document.getElementById("cs-role").value=cs.role;
+  document.getElementById("cs-m1v").value=cs.metrics[0]?.val||"";
+  document.getElementById("cs-m1l").value=cs.metrics[0]?.label||"";
+  document.getElementById("cs-m2v").value=cs.metrics[1]?.val||"";
+  document.getElementById("cs-m2l").value=cs.metrics[1]?.label||"";
+  document.getElementById("cs-m3v").value=cs.metrics[2]?.val||"";
+  document.getElementById("cs-m3l").value=cs.metrics[2]?.label||"";
+  document.getElementById("cs-problem").value=cs.problem;
+  document.getElementById("cs-roledetail").value=cs.roledetail;
+  document.getElementById("cs-decisions").value=(cs.decisions||[]).map(d=>d.label+" | "+d.text).join("\n");
+  document.getElementById("cs-stack").value=cs.stack;
+  document.getElementById("cs-diff").value=cs.diff;
+  document.querySelectorAll("[id^='cs-t-']").forEach(c=>{c.checked=cs.tags.includes(c.value);});
+  openModal("case-modal");
+}
+function saveCaseStudy(){
+  const title=document.getElementById("cs-title").value.trim();
+  if(!title){alert("Title required.");return;}
+  const tags=[...document.querySelectorAll("[id^='cs-t-']:checked")].map(c=>c.value);
+  const decisionsRaw=document.getElementById("cs-decisions").value.trim();
+  const decisions=decisionsRaw?decisionsRaw.split("\n").filter(Boolean).map(line=>{const[label,...rest]=line.split("|");return{label:(label||"").trim(),text:(rest.join("|")||"").trim()};}):[];
+  const data={
+    id:editingCase||("cs"+Date.now()),
+    title,role:document.getElementById("cs-role").value.trim(),
+    tags:tags.length?tags:["ai"],
+    metrics:[
+      {val:document.getElementById("cs-m1v").value,label:document.getElementById("cs-m1l").value},
+      {val:document.getElementById("cs-m2v").value,label:document.getElementById("cs-m2l").value},
+      {val:document.getElementById("cs-m3v").value,label:document.getElementById("cs-m3l").value}
+    ].filter(m=>m.val),
+    problem:document.getElementById("cs-problem").value.trim(),
+    roledetail:document.getElementById("cs-roledetail").value.trim(),
+    decisions,ai_specs:[],
+    stack:document.getElementById("cs-stack").value.trim(),
+    diff:document.getElementById("cs-diff").value.trim()
+  };
+  if(editingCase){const idx=caseStudies.findIndex(c=>c.id===editingCase);caseStudies[idx]=data;}
+  else{caseStudies.push(data);}
+  closeModal("case-modal");
+  renderCaseStudies();
+}
+function deleteCase(){
+  if(!editingCase||!confirm("Delete this case study?"))return;
+  caseStudies=caseStudies.filter(c=>c.id!==editingCase);
+  closeModal("case-modal");
+  renderCaseStudies();
+}
+
+// ════════════════════════════════════════════════════════
+// PUBLIC PROJECTS
+// ════════════════════════════════════════════════════════
+function getIcon(tags){for(const t of tags)if(cardIcons[t])return cardIcons[t];return cardIcons.default;}
+
+function renderProjects(){
+  const grid=document.getElementById("projects-grid");
+  const filtered=activeFilter==="all"?projects:projects.filter(p=>p.tags.includes(activeFilter));
+  grid.innerHTML="";
+  filtered.forEach((p,i)=>{
+    const card=document.createElement("div");
+    card.className="project-card";card.dataset.id=p.id;card.style.animationDelay=`${i*0.07}s`;
+    if(isAdminMode)card.draggable=true;
+    const thumbHTML=p.thumb?`<img class="card-img" src="${p.thumb}" alt="${p.title}">`:`<div class="thumb-placeholder"><div class="thumb-grid"></div><div class="thumb-icon">${getIcon(p.tags)}</div></div>`;
+    const demoBtn=p.demo?`<a class="card-link card-link-demo" href="${p.demo}" target="_blank">Demo</a>`:"";
+    const editBtns=isAdminMode?`<button class="card-link card-link-edit" onclick="editProject(event,${p.id})">✎ Edit</button>`:"";
+    card.innerHTML=`<div style="position:relative;">${thumbHTML}<button class="thumb-upload-btn" onclick="triggerThumbUpload(event,${p.id})">📷</button></div>
+    <div class="card-body">
+      <div class="card-tags">${p.tags.map(t=>`<span class="tag ${tagColors[t]||"tag-ai"}">${tagLabels[t]||t}</span>`).join("")}</div>
+      <div class="card-title">${p.title}</div>
+      <p class="card-desc">${p.desc}</p>
+      <div class="card-footer"><span class="card-meta">${p.year}</span><div class="card-links">${demoBtn}${editBtns}</div></div>
+    </div>`;
+    if(isAdminMode)setupDrag(card);
+    grid.appendChild(card);
+  });
+  if(isAdminMode){
+    const addCard=document.createElement("div");
+    addCard.className="add-card";
+    addCard.innerHTML=`<div class="add-card-icon">＋</div><div class="add-card-label">Add New Project</div>`;
+    addCard.onclick=()=>openAddModal();
+    grid.appendChild(addCard);
+  }
+}
+
+function filterCards(f,btn){activeFilter=f;document.querySelectorAll(".filter-tab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderProjects();}
+function setLayout(mode,btn){document.querySelectorAll(".layout-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("projects-grid").classList.toggle("list-view",mode==="list");}
+
+let dragSrc=null;
+function setupDrag(card){
+  card.addEventListener("dragstart",e=>{dragSrc=card;setTimeout(()=>card.classList.add("dragging"),0);});
+  card.addEventListener("dragend",()=>{card.classList.remove("dragging");document.querySelectorAll(".drag-over").forEach(c=>c.classList.remove("drag-over"));});
+  card.addEventListener("dragover",e=>{e.preventDefault();if(card!==dragSrc&&!card.classList.contains("add-card")){document.querySelectorAll(".drag-over").forEach(c=>c.classList.remove("drag-over"));card.classList.add("drag-over");}});
+  card.addEventListener("drop",e=>{e.preventDefault();if(dragSrc&&card!==dragSrc&&card.dataset.id){const si=parseInt(dragSrc.dataset.id),di=parseInt(card.dataset.id);const sx=projects.findIndex(p=>p.id===si),dx=projects.findIndex(p=>p.id===di);if(sx>-1&&dx>-1){const[item]=projects.splice(sx,1);projects.splice(dx,0,item);renderProjects();}}card.classList.remove("drag-over");});
+}
+
+function openAddModal(){
+  editingProjectId=null;
+  document.getElementById("modal-title").textContent="Add New Project";
+  document.getElementById("proj-delete-btn").style.display="none";
+  ["f-title","f-desc","f-demo","f-github","f-year"].forEach(id=>document.getElementById(id).value="");
+  document.querySelectorAll("[id^='t-'].tag-checkbox").forEach(c=>c.checked=false);
+  openModal("project-modal");
+}
+function editProject(e,id){
+  e.stopPropagation();
+  editingProjectId=id;
+  const p=projects.find(x=>x.id===id);
+  document.getElementById("modal-title").textContent="Edit Project";
+  document.getElementById("proj-delete-btn").style.display="block";
+  document.getElementById("f-title").value=p.title;
+  document.getElementById("f-desc").value=p.desc;
+  document.getElementById("f-demo").value=p.demo||"";
+  document.getElementById("f-github").value=p.github||"";
+  document.getElementById("f-year").value=p.year||"";
+  document.querySelectorAll("[id^='t-'].tag-checkbox").forEach(c=>{c.checked=p.tags.includes(c.value);});
+  openModal("project-modal");
+}
+function saveProject(){
+  const title=document.getElementById("f-title").value.trim();
+  if(!title){alert("Title required.");return;}
+  const tags=[...document.querySelectorAll("[id^='t-'].tag-checkbox:checked")].map(c=>c.value);
+  const data={title,desc:document.getElementById("f-desc").value.trim()||"An AI project.",tags:tags.length?tags:["ai"],demo:document.getElementById("f-demo").value.trim(),github:document.getElementById("f-github").value.trim(),year:document.getElementById("f-year").value.trim()||new Date().getFullYear().toString(),thumb:null};
+  const file=document.getElementById("f-thumb").files[0];
+  const proceed=(td)=>{
+    data.thumb=td;
+    if(editingProjectId){const idx=projects.findIndex(p=>p.id===editingProjectId);if(!data.thumb&&projects[idx].thumb)data.thumb=projects[idx].thumb;projects[idx]={...projects[idx],...data};}
+    else{data.id=Date.now();projects.push(data);}
+    closeModal("project-modal");renderProjects();
+  };
+  if(file){const r=new FileReader();r.onload=e=>proceed(e.target.result);r.readAsDataURL(file);}else proceed(null);
+}
+function deleteProject(){
+  if(!editingProjectId||!confirm("Delete this project?"))return;
+  projects=projects.filter(p=>p.id!==editingProjectId);
+  closeModal("project-modal");renderProjects();
+}
+function triggerThumbUpload(e,id){
+  e.stopPropagation();
+  if(!isAdminMode)return;
+  const input=document.createElement("input");input.type="file";input.accept="image/*";
+  input.onchange=ev=>{const file=ev.target.files[0];if(!file)return;const r=new FileReader();r.onload=re=>{const p=projects.find(x=>x.id===id);if(p){p.thumb=re.target.result;renderProjects();}};r.readAsDataURL(file);};
+  input.click();
+}
+
+// ════════════════════════════════════════════════════════
+// SKILLS
+// ════════════════════════════════════════════════════════
+function renderSkills(){
+  const grid=document.getElementById("skills-grid");
+  grid.innerHTML=skills.map((s,i)=>`
+    <div class="skill-card" style="position:relative;">
+      ${isAdminMode?`<button class="edit-btn" style="display:block;top:6px;right:6px;font-size:0.6rem;padding:0.18rem 0.45rem;" onclick="openEditSkill(${i})">✎</button>`:""}
+      <div class="skill-icon">${s.icon}</div>
+      <div class="skill-name">${s.name}</div>
+      <div class="skill-level">${s.level}</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:0%" data-pct="${s.pct}"></div></div>
+    </div>`).join("");
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll(".skill-fill").forEach(b=>{b.style.width=b.dataset.pct+"%";});obs.unobserve(e.target);}});},{threshold:0.2});
+  obs.observe(grid);
+}
+function openAddSkillModal(){
+  editingSkillIdx=null;
+  document.getElementById("skill-modal-title").textContent="Add Skill";
+  document.getElementById("sk-delete-btn").style.display="none";
+  ["sk-icon","sk-name","sk-level","sk-pct"].forEach(id=>document.getElementById(id).value="");
+  openModal("skill-modal");
+}
+function openEditSkill(idx){
+  editingSkillIdx=idx;
+  const s=skills[idx];
+  document.getElementById("skill-modal-title").textContent="Edit Skill";
+  document.getElementById("sk-delete-btn").style.display="block";
+  document.getElementById("sk-icon").value=s.icon;
+  document.getElementById("sk-name").value=s.name;
+  document.getElementById("sk-level").value=s.level;
+  document.getElementById("sk-pct").value=s.pct;
+  openModal("skill-modal");
+}
+function saveSkill(){
+  const name=document.getElementById("sk-name").value.trim();
+  if(!name){alert("Skill name required.");return;}
+  const data={icon:document.getElementById("sk-icon").value||"⚙️",name,level:document.getElementById("sk-level").value.trim()||"Proficient",pct:parseInt(document.getElementById("sk-pct").value)||70};
+  if(editingSkillIdx!==null)skills[editingSkillIdx]=data;else skills.push(data);
+  closeModal("skill-modal");renderSkills();
+}
+function deleteSkill(){
+  if(editingSkillIdx===null||!confirm("Delete this skill?"))return;
+  skills.splice(editingSkillIdx,1);
+  closeModal("skill-modal");renderSkills();
+}
+
+// ════════════════════════════════════════════════════════
+// HERO EDIT
+// ════════════════════════════════════════════════════════
+function openHeroEdit(){
+  document.getElementById("he-badge").value=document.getElementById("hero-badge-text").textContent;
+  document.getElementById("he-subtitle").value=document.getElementById("hero-subtitle").textContent.trim();
+  document.getElementById("he-narrative").value=document.getElementById("hero-narrative").textContent.trim();
+  const chips=[...document.getElementById("hero-chips").querySelectorAll(".chip")].map(c=>c.textContent).join(", ");
+  document.getElementById("he-chips").value=chips;
+  document.getElementById("he-resume").value=document.getElementById("resume-btn").href;
+  openModal("hero-edit-modal");
+}
+function saveHeroEdit(){
+  document.getElementById("hero-badge-text").textContent=document.getElementById("he-badge").value;
+  document.getElementById("hero-subtitle").textContent=document.getElementById("he-subtitle").value;
+  document.getElementById("hero-narrative").textContent=document.getElementById("he-narrative").value;
+  const chips=document.getElementById("he-chips").value.split(",").map(c=>c.trim()).filter(Boolean);
+  document.getElementById("hero-chips").innerHTML=chips.map(c=>`<span class="chip">${c}</span>`).join("");
+  const resumeUrl=document.getElementById("he-resume").value.trim();
+  if(resumeUrl)document.getElementById("resume-btn").href=resumeUrl;
+  closeModal("hero-edit-modal");
+}
+
+// ════════════════════════════════════════════════════════
+// STATS EDIT
+// ════════════════════════════════════════════════════════
+function openStatsEdit(){
+  const fields=document.getElementById("stats-edit-fields");
+  fields.innerHTML=[1,2,3,4,5].map(n=>`
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:0.8rem;margin-bottom:0.8rem;">
+      <div class="form-group" style="margin:0;"><label class="form-label">Stat ${n} Number</label><input class="form-input" id="se-${n}-num" value="${document.getElementById("stat-"+n+"-num").textContent}"></div>
+      <div class="form-group" style="margin:0;"><label class="form-label">Stat ${n} Label</label><input class="form-input" id="se-${n}-lbl" value="${document.getElementById("stat-"+n+"-lbl").textContent}"></div>
+    </div>`).join("");
+  openModal("stats-edit-modal");
+}
+function saveStatsEdit(){
+  [1,2,3,4,5].forEach(n=>{
+    document.getElementById("stat-"+n+"-num").textContent=document.getElementById("se-"+n+"-num").value;
+    document.getElementById("stat-"+n+"-lbl").textContent=document.getElementById("se-"+n+"-lbl").value;
+  });
+  closeModal("stats-edit-modal");
+}
+
+// ════════════════════════════════════════════════════════
+// NAV EDIT
+// ════════════════════════════════════════════════════════
+function openNavEdit(){
+  document.getElementById("nav-title-input").value=document.getElementById("nav-site-title").textContent;
+  openModal("nav-edit-modal");
+}
+function saveNavEdit(){
+  document.getElementById("nav-site-title").textContent=document.getElementById("nav-title-input").value||"amritasharma.ai";
+  closeModal("nav-edit-modal");
+}
+
+// ════════════════════════════════════════════════════════
+// CLIENT BANNER
+// ════════════════════════════════════════════════════════
+function openClientBannerEdit(){
+  document.getElementById("cb-text").value=document.getElementById("client-banner-text").innerHTML;
+  openModal("client-banner-modal");
+}
+function saveClientBanner(){
+  document.getElementById("client-banner-text").innerHTML=document.getElementById("cb-text").value;
+  closeModal("client-banner-modal");
+}
+
+// ════════════════════════════════════════════════════════
+// ABOUT EDIT
+// ════════════════════════════════════════════════════════
+function openAboutEdit(){
+  document.getElementById("ae-name").value=document.getElementById("about-name").textContent;
+  document.getElementById("ae-role").value=document.getElementById("about-role").textContent;
+  document.getElementById("ae-bio").value=document.getElementById("about-bio").textContent.trim();
+  const eduItems=[...document.getElementById("edu-list").querySelectorAll(".edu-item")];
+  document.getElementById("ae-edu").value=eduItems.map(el=>{
+    const strong=el.querySelector("strong");
+    const text=el.querySelector("div").innerHTML.replace(/<strong>.*?<\/strong><br>/,"").trim();
+    return(strong?strong.textContent:"")+" | "+text;
+  }).join("\n");
+  document.getElementById("ae-email").value=document.getElementById("link-email").href;
+  document.getElementById("ae-linkedin").value=document.getElementById("link-linkedin").href;
+  document.getElementById("ae-github").value=document.getElementById("link-github").href;
+  document.getElementById("ae-resume").value=document.getElementById("link-resume").href;
+  openModal("about-edit-modal");
+}
+function saveAboutEdit(){
+  document.getElementById("about-name").textContent=document.getElementById("ae-name").value||"Amrita Sharma";
+  document.getElementById("about-role").textContent=document.getElementById("ae-role").value;
+  document.getElementById("about-bio").textContent=document.getElementById("ae-bio").value;
+  // Education
+  const eduRaw=document.getElementById("ae-edu").value.trim();
+  document.getElementById("edu-list").innerHTML=eduRaw?eduRaw.split("\n").filter(Boolean).map(line=>{
+    const[school,...rest]=line.split("|");
+    return`<div class="edu-item"><div class="edu-dot"></div><div><strong>${school.trim()}</strong><br>${rest.join("|").trim()}</div></div>`;
+  }).join(""):"";
+  // Links
+  const setLink=(id,val)=>{if(val)document.getElementById(id).href=val;};
+  setLink("link-email",document.getElementById("ae-email").value);
+  setLink("link-linkedin",document.getElementById("ae-linkedin").value);
+  setLink("link-github",document.getElementById("ae-github").value);
+  setLink("link-resume",document.getElementById("ae-resume").value);
+  // Initials from name
+  const name=document.getElementById("ae-name").value||"AS";
+  const initials=name.split(" ").map(w=>w[0]).join("").substring(0,2).toUpperCase();
+  const avatarEl=document.getElementById("avatar-initials");
+  if(avatarEl)avatarEl.textContent=initials;
+  closeModal("about-edit-modal");
+}
+
+// ════════════════════════════════════════════════════════
+// AVATAR / PHOTO UPLOAD
+// ════════════════════════════════════════════════════════
+function triggerAvatarUpload(){
+  if(!isAdminMode)return;
+  document.getElementById("avatar-file-input").click();
+}
+function handleAvatarUpload(event){
+  const file=event.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const inner=document.getElementById("avatar-inner");
+    inner.innerHTML=`<img class="avatar-photo" src="${e.target.result}" alt="Profile photo">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ════════════════════════════════════════════════════════
+// SMOOTH SCROLL
+// ════════════════════════════════════════════════════════
+document.querySelectorAll("a[href^='#']").forEach(a=>{
+  a.addEventListener("click",e=>{
+    const id=a.getAttribute("href").slice(1);
+    const el=document.getElementById(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:"smooth"});}
+  });
+});
+
+// ════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════
+renderCaseStudies();
+renderProjects();
+renderSkills();
+</script>
+</body>
+</html>
