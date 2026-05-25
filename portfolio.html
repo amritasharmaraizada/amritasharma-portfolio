@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Data Product Manager — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#D4AF37;--gold-light:#F0D060;--gold-dim:#8B6914;--gold-glow:rgba(212,175,55,0.12);
+  --black:#0A0A0A;--black-2:#111111;--black-3:#1A1A1A;--black-4:#222222;--black-5:#2A2A2A;
+  --text-primary:#F5F0E0;--text-secondary:#9A9080;--text-muted:#5A5040;
+  --border:rgba(212,175,55,0.15);--border-hover:rgba(212,175,55,0.4);
+  --radius:12px;--radius-sm:8px;
+  --teal:rgba(13,115,119,0.8);--green:rgba(100,180,120,0.8);--purple:rgba(140,120,255,0.8);--orange:rgba(255,140,80,0.8);--blue:rgba(80,180,220,0.8);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text-primary);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(212,175,55,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--gold);letter-spacing:0.02em;text-decoration:none;}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{font-size:0.82rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.45rem 1.1rem;border-radius:6px;font-weight:600!important;}
+.nav-cta:hover{background:var(--gold-light)!important;transform:translateY(-1px);}
+
+/* HERO */
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;overflow:hidden;}
+.hero-orb{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:pulse 7s ease-in-out infinite;}
+.hero-orb2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(13,115,119,0.06) 0%,transparent 70%);top:30%;left:20%;pointer-events:none;animation:pulse 9s ease-in-out infinite reverse;}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.6;}50%{transform:translate(-50%,-50%) scale(1.12);opacity:1;}}
+.hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:var(--black-3);border:1px solid var(--border);border-radius:100px;padding:0.4rem 1rem;font-size:0.75rem;font-weight:500;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp 0.6s ease both;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 2s ease infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6.5vw,5.2rem);font-weight:900;line-height:1.06;letter-spacing:-0.02em;margin-bottom:1.5rem;animation:fadeUp 0.7s 0.1s ease both;}
+.hero-title .gold{color:var(--gold);}
+.hero-subtitle{font-size:1.05rem;color:var(--text-secondary);max-width:620px;line-height:1.75;margin-bottom:2rem;animation:fadeUp 0.7s 0.2s ease both;font-weight:300;}
+.hero-narrative{font-size:0.9rem;color:var(--text-muted);max-width:580px;line-height:1.7;margin-bottom:2.5rem;animation:fadeUp 0.7s 0.25s ease both;font-style:italic;font-weight:300;border-left:2px solid var(--border-hover);padding-left:1rem;text-align:left;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:3rem;animation:fadeUp 0.7s 0.3s ease both;}
+.chip{background:var(--black-3);border:1px solid var(--border);border-radius:100px;padding:0.3rem 0.85rem;font-size:0.75rem;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;transition:all 0.2s;cursor:default;}
+.chip:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-glow);}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.7s 0.4s ease both;}
+.btn-primary{background:var(--gold);color:var(--black);border:none;border-radius:var(--radius-sm);padding:0.85rem 2rem;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--border-hover);border-radius:var(--radius-sm);padding:0.85rem 2rem;font-size:0.88rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{background:var(--gold-glow);transform:translateY(-2px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* STATS */
+.stats-bar{position:relative;z-index:1;display:flex;justify-content:center;background:var(--black-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-wrap:wrap;}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:0 2.5rem;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);}
+.stat-label{font-size:0.72rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem;}
+
+/* SECTIONS */
+section{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:5rem 2rem;}
+.section-label{font-size:0.7rem;font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:0.8rem;line-height:1.2;}
+.section-desc{color:var(--text-secondary);font-size:0.95rem;line-height:1.75;max-width:560px;font-weight:300;margin-bottom:3rem;}
+
+/* CASE STUDIES (client projects) */
+#client-projects{position:relative;z-index:1;background:var(--black-2);max-width:100%;padding:5rem 0;}
+.client-inner{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.client-banner{background:var(--black-3);border:1px solid var(--border-hover);border-radius:var(--radius);padding:1.5rem 2rem;margin-bottom:3rem;display:flex;align-items:center;gap:1.5rem;}
+.client-banner-icon{font-size:2rem;flex-shrink:0;}
+.client-banner-text{font-size:0.9rem;color:var(--text-secondary);line-height:1.7;font-weight:300;}
+.client-banner-text strong{color:var(--text-primary);font-weight:500;}
+.lock-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(212,175,55,0.1);border:1px solid var(--border-hover);border-radius:100px;padding:0.3rem 0.8rem;font-size:0.7rem;font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:0.06em;margin-bottom:2rem;}
+
+/* CASE STUDY CARDS */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.5rem;}
+.case-card{background:var(--black-3);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.3s;cursor:pointer;position:relative;}
+.case-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 20px 60px rgba(212,175,55,0.1);}
+.case-card-header{padding:1.5rem 1.5rem 0;}
+.case-card-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.9rem;}
+.case-card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.5rem;line-height:1.3;}
+.case-card-desc{font-size:0.83rem;color:var(--text-secondary);line-height:1.65;font-weight:300;padding:0 1.5rem 1rem;}
+.case-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);background:var(--black-4);}
+.cm{padding:0.8rem;text-align:center;border-right:1px solid var(--border);}
+.cm:last-child{border-right:none;}
+.cm-val{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold);}
+.cm-label{font-size:0.65rem;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-top:0.1rem;}
+.case-card-footer{padding:0.9rem 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.case-expand-btn{font-size:0.75rem;font-weight:600;color:var(--gold);background:none;border:1px solid var(--border-hover);border-radius:6px;padding:0.35rem 0.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.case-expand-btn:hover{background:var(--gold-glow);}
+.case-year{font-size:0.72rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+
+/* EXPANDED CASE STUDY PANEL */
+.case-detail{display:none;border-top:1px solid var(--border);padding:1.5rem;background:var(--black-2);animation:fadeUp 0.3s ease both;}
+.case-detail.open{display:block;}
+.detail-section{margin-bottom:1.2rem;}
+.detail-label{font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;}
+.detail-text{font-size:0.83rem;color:var(--text-secondary);line-height:1.7;font-weight:300;}
+.detail-decision{border-left:2px solid var(--border-hover);padding:0.6rem 0.9rem;margin:0.4rem 0;font-size:0.82rem;color:var(--text-secondary);line-height:1.6;background:rgba(212,175,55,0.03);border-radius:0 6px 6px 0;}
+.detail-decision strong{color:var(--text-primary);font-size:0.78rem;display:block;margin-bottom:0.2rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;}
+.ai-spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.5rem;}
+.ai-spec{background:var(--black-4);border:1px solid var(--border);border-radius:6px;padding:0.7rem 0.9rem;}
+.ai-spec-key{font-size:0.65rem;font-family:'JetBrains Mono',monospace;color:var(--gold-dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.25rem;}
+.ai-spec-val{font-size:0.78rem;color:var(--text-secondary);line-height:1.5;}
+.what-diff{background:rgba(212,175,55,0.05);border:1px dashed var(--border-hover);border-radius:6px;padding:0.8rem 1rem;font-size:0.82rem;color:var(--text-secondary);line-height:1.6;font-style:italic;}
+
+/* PROJECTS GRID (public) */
+.projects-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;}
+.filter-tabs{display:flex;gap:0.4rem;background:var(--black-3);border:1px solid var(--border);border-radius:8px;padding:4px;}
+.filter-tab{padding:0.38rem 0.9rem;border:none;background:transparent;color:var(--text-secondary);font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.filter-tab.active{background:var(--gold);color:var(--black);font-weight:600;}
+.filter-tab:hover:not(.active){color:var(--gold);}
+.layout-toggles{display:flex;gap:0.4rem;}
+.layout-btn{width:34px;height:34px;border:1px solid var(--border);background:var(--black-3);border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:all 0.2s;font-size:0.95rem;}
+.layout-btn.active,.layout-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-glow);}
+#projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;transition:all 0.3s;}
+#projects-grid.list-view{grid-template-columns:1fr;}
+.project-card{background:var(--black-2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all 0.3s;position:relative;animation:fadeUp 0.5s ease both;}
+.project-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 20px 60px rgba(212,175,55,0.1);}
+.thumb-placeholder{width:100%;height:190px;background:var(--black-3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.thumb-placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--black-4),var(--black-3));}
+.thumb-icon{font-size:2.8rem;position:relative;z-index:1;filter:drop-shadow(0 0 20px var(--gold));}
+.thumb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.06) 1px,transparent 1px);background-size:28px 28px;}
+.card-img{width:100%;height:190px;object-fit:cover;display:block;}
+.thumb-upload-btn{position:absolute;top:10px;right:10px;background:rgba(10,10,10,0.85);border:1px solid var(--border-hover);border-radius:6px;color:var(--gold);font-size:0.7rem;font-family:'DM Sans',sans-serif;padding:0.28rem 0.55rem;cursor:pointer;opacity:0;transition:opacity 0.2s;z-index:10;font-weight:500;}
+.project-card:hover .thumb-upload-btn{opacity:1;}
+.card-body{padding:1.2rem;}
+.card-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;}
+.tag{font-size:0.65rem;font-family:'JetBrains Mono',monospace;font-weight:500;padding:0.18rem 0.5rem;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;}
+.tag-ai{background:rgba(212,175,55,0.1);color:var(--gold);border:1px solid rgba(212,175,55,0.2);}
+.tag-agent{background:rgba(100,180,120,0.1);color:#7DD87A;border:1px solid rgba(100,180,120,0.2);}
+.tag-genai{background:rgba(140,120,255,0.1);color:#B89FFF;border:1px solid rgba(140,120,255,0.2);}
+.tag-data{background:rgba(80,180,220,0.1);color:#7BD4F0;border:1px solid rgba(80,180,220,0.2);}
+.tag-rag{background:rgba(255,140,80,0.1);color:#FFB380;border:1px solid rgba(255,140,80,0.2);}
+.tag-mlops{background:rgba(13,115,119,0.15);color:#4EC9C9;border:1px solid rgba(13,115,119,0.25);}
+.card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.45rem;line-height:1.3;}
+.card-desc{font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.9rem;font-weight:300;}
+.card-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:0.75rem;}
+.card-meta{font-size:0.72rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+.card-links{display:flex;gap:0.5rem;}
+.card-link{font-size:0.72rem;font-weight:600;text-decoration:none;padding:0.28rem 0.65rem;border-radius:5px;transition:all 0.2s;letter-spacing:0.03em;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.card-link-edit{background:var(--black-4);color:var(--text-secondary);border:1px solid var(--border);}
+.card-link-edit:hover{border-color:var(--gold);color:var(--gold);}
+.add-card{background:var(--black-2);border:1px dashed var(--border-hover);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;cursor:pointer;transition:all 0.3s;gap:1rem;color:var(--text-muted);}
+.add-card:hover{border-color:var(--gold);background:var(--gold-glow);color:var(--gold);}
+.add-card-icon{font-size:1.8rem;}
+.add-card-label{font-size:0.82rem;font-weight:500;letter-spacing:0.05em;}
+#projects-grid.list-view .project-card{display:flex;flex-direction:row;}
+#projects-grid.list-view .thumb-placeholder,#projects-grid.list-view .card-img{width:180px;min-width:180px;height:auto;}
+#projects-grid.list-view .card-body{flex:1;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem;}
+.skill-card{background:var(--black-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.1rem;transition:all 0.2s;}
+.skill-card:hover{border-color:var(--gold);background:var(--black-3);}
+.skill-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.skill-name{font-size:0.88rem;font-weight:600;margin-bottom:0.25rem;}
+.skill-level{font-size:0.68rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;margin-bottom:0.5rem;}
+.skill-bar{height:2px;background:var(--black-4);border-radius:10px;overflow:hidden;}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:10px;transition:width 1.2s ease;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;}
+.avatar-ring{width:170px;height:170px;border-radius:50%;border:2px solid var(--border-hover);padding:4px;position:relative;}
+.avatar-ring::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--gold);opacity:0.3;animation:spin 10s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:var(--black-3);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:var(--gold);}
+.about-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.2rem;}
+.about-role{font-size:0.8rem;color:var(--gold);font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;margin-bottom:1.4rem;}
+.about-text{font-size:0.93rem;color:var(--text-secondary);line-height:1.85;font-weight:300;margin-bottom:1.5rem;}
+.edu-block{margin-bottom:1.5rem;}
+.edu-item{display:flex;gap:0.8rem;align-items:flex-start;margin:0.6rem 0;font-size:0.82rem;color:var(--text-secondary);line-height:1.5;}
+.edu-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0;}
+.edu-item strong{color:var(--text-primary);font-weight:500;}
+.contact-links{display:flex;gap:0.7rem;flex-wrap:wrap;}
+.contact-link{display:flex;align-items:center;gap:0.45rem;background:var(--black-3);border:1px solid var(--border);border-radius:8px;padding:0.55rem 0.9rem;font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:all 0.2s;font-weight:500;}
+.contact-link:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-glow);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(8px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--black-2);border:1px solid var(--border-hover);border-radius:var(--radius);width:100%;max-width:580px;max-height:90vh;overflow-y:auto;padding:2rem;position:relative;animation:fadeUp 0.3s ease both;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:var(--black-3);border:1px solid var(--border);color:var(--text-secondary);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-family:monospace;}
+.modal-close:hover{border-color:var(--gold);color:var(--gold);}
+.modal h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1.4rem;color:var(--gold);}
+.form-group{margin-bottom:1.1rem;}
+.form-label{display:block;font-size:0.75rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.35rem;font-family:'JetBrains Mono',monospace;}
+.form-input,.form-textarea{width:100%;background:var(--black-3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'DM Sans',sans-serif;font-size:0.88rem;padding:0.65rem 0.9rem;transition:border-color 0.2s;outline:none;}
+.form-input:focus,.form-textarea:focus{border-color:var(--gold);}
+.form-textarea{min-height:75px;resize:vertical;}
+.tag-checkboxes{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.tag-checkbox{display:none;}
+.tag-checkbox-label{cursor:pointer;font-size:0.68rem;font-family:'JetBrains Mono',monospace;font-weight:500;padding:0.22rem 0.55rem;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;border:1px solid var(--border);color:var(--text-muted);transition:all 0.2s;user-select:none;}
+.tag-checkbox:checked+.tag-checkbox-label{background:rgba(212,175,55,0.15);border-color:var(--gold);color:var(--gold);}
+.form-actions{display:flex;gap:0.7rem;justify-content:flex-end;margin-top:1.4rem;}
+.btn-cancel{background:var(--black-3);border:1px solid var(--border);color:var(--text-secondary);padding:0.6rem 1.3rem;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.2s;}
+.btn-cancel:hover{border-color:var(--gold);color:var(--gold);}
+.btn-save{background:var(--gold);color:var(--black);border:none;padding:0.6rem 1.5rem;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.btn-save:hover{background:var(--gold-light);}
+
+/* PASSWORD MODAL */
+.pwd-input{width:100%;background:var(--black-3);border:1px solid var(--border-hover);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.8rem 1rem;text-align:center;letter-spacing:0.2em;outline:none;margin:1rem 0;}
+.pwd-input:focus{border-color:var(--gold);}
+.pwd-error{font-size:0.8rem;color:#FF6B6B;text-align:center;margin-top:0.3rem;display:none;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.8rem;background:var(--black-2);}
+.footer-gold{color:var(--gold);}
+.drag-hint{text-align:center;margin-bottom:1.5rem;font-size:0.75rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:0.5rem;justify-content:center;}
+.project-card.dragging{opacity:0.4;border-color:var(--gold);}
+.project-card.drag-over{border-color:var(--gold);background:var(--gold-glow);}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px;}
+
+/* CONFIDENTIALITY NOTE */
+.conf-note{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--text-muted);background:var(--black-4);border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.7rem;margin-bottom:1.5rem;}
+
+@media(max-width:768px){nav{padding:1rem;}.nav-links{display:none;}.stat-item{padding:0 1.2rem;}.about-grid{grid-template-columns:1fr;}.case-grid{grid-template-columns:1fr;}#projects-grid.list-view .project-card{flex-direction:column;}#projects-grid.list-view .thumb-placeholder,#projects-grid.list-view .card-img{width:100%;height:150px;}.ai-spec-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <a class="nav-logo" href="#">YourName.ai</a>
+  <div class="nav-links">
+    <a href="#client-projects">Client Work</a>
+    <a href="#projects">AI Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#about" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-badge">Open to Senior AI/Technical PM Roles</div>
+  <h1 class="hero-title">
+    Technical <span class="gold">AI & Data</span><br>Product Manager
+  </h1>
+  <p class="hero-subtitle">
+    12+ years shipping AI products at enterprise scale. From data scientist to agentic AI platform TPM —
+    I understand the full stack, from model evaluation to roadmap strategy.
+  </p>
+  <p class="hero-narrative">
+    "I've built ML models, owned RAG pipelines and knowledge graphs, and shipped agentic AI systems to 20,000+ enterprise users across 15 countries.
+    My edge is that I understand the technical stack deeply enough to make faster, better product decisions —
+    and build real credibility with engineering and data science teams."
+  </p>
+  <div class="hero-chips">
+    <span class="chip">Agentic AI</span><span class="chip">LLMs</span><span class="chip">RAG</span>
+    <span class="chip">Knowledge Graphs</span><span class="chip">LangChain</span><span class="chip">Pinecone</span>
+    <span class="chip">AWS Bedrock</span><span class="chip">GCP Vertex AI</span><span class="chip">LLM Eval</span>
+    <span class="chip">Product Strategy</span><span class="chip">Roadmapping</span><span class="chip">Agile</span>
+  </div>
+  <div class="hero-actions">
+    <a href="#client-projects" class="btn-primary">View Client Work ↓</a>
+    <a href="#about" class="btn-outline">Download Resume</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">12+</span><span class="stat-label">Years Experience</span></div>
+  <div class="stat-item"><span class="stat-num">20K+</span><span class="stat-label">Enterprise Users Served</span></div>
+  <div class="stat-item"><span class="stat-num">85%</span><span class="stat-label">AI Query Accuracy Achieved</span></div>
+  <div class="stat-item"><span class="stat-num">$50M</span><span class="stat-label">Incremental Billings Driven</span></div>
+  <div class="stat-item"><span class="stat-num">15</span><span class="stat-label">Countries at Launch</span></div>
+</div>
+
+<!-- CLIENT PROJECTS (PROTECTED) -->
+<div id="client-projects">
+  <div class="client-inner">
+    <div class="section-label">Client Work</div>
+    <h2 class="section-title">Enterprise AI Case Studies</h2>
+    <div class="lock-badge">🔒 Anonymized — Details per confidentiality obligations</div>
+    <div class="client-banner">
+      <div class="client-banner-icon">🤖</div>
+      <div class="client-banner-text">
+        <strong>Delivered AI solutions across 3 enterprise engagements</strong> — spanning agentic AI customer support,
+        GenAI reverse logistics automation, and large-scale data product platforms.
+        All client identifiers, proprietary metrics, and system names have been generalized. Outcomes expressed in relative terms.
+      </div>
+    </div>
+    <div class="case-grid" id="case-grid"></div>
+  </div>
+</div>
+
+<!-- FEATURED AI PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Featured AI Projects</h2>
+  <p class="section-desc">Personal and side projects demonstrating hands-on capability with modern AI stacks. Click any card to explore. Drag to reorder.</p>
+  <div class="projects-toolbar">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterCards('all',this)">All</button>
+      <button class="filter-tab" onclick="filterCards('ai',this)">GenAI</button>
+      <button class="filter-tab" onclick="filterCards('agent',this)">Agentic</button>
+      <button class="filter-tab" onclick="filterCards('rag',this)">RAG</button>
+      <button class="filter-tab" onclick="filterCards('data',this)">Data</button>
+    </div>
+    <div style="display:flex;gap:0.8rem;align-items:center;">
+      <div class="drag-hint">⠿ drag to reorder</div>
+      <div class="layout-toggles">
+        <button class="layout-btn active" title="Grid" onclick="setLayout('grid',this)">⊞</button>
+        <button class="layout-btn" title="List" onclick="setLayout('list',this)">≡</button>
+      </div>
+    </div>
+  </div>
+  <div id="projects-grid"></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--black-2);max-width:100%;padding:5rem 2rem;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">AI & PM Skill Stack</h2>
+    <p class="section-desc">Tools, frameworks, and methodologies across the full AI product lifecycle — from model eval to roadmap strategy.</p>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div class="avatar-ring"><div class="avatar-inner" id="avatar-initials">YN</div></div>
+      <div style="text-align:center;">
+        <div class="about-name" id="about-name">Your Name</div>
+        <div class="about-role">Technical AI/Data PM · Builder</div>
+      </div>
+      <button class="btn-outline" style="font-size:0.78rem;padding:0.55rem 1.1rem;" onclick="openProfileEdit()">✎ Edit Profile</button>
+    </div>
+    <div>
+      <p class="about-text" id="about-bio">
+        I'm a Technical AI & Data Product Manager with 12+ years of experience and a foundation in data science and computer science.
+        I've built ML models as a data scientist, owned RAG pipelines and knowledge graphs as a technical PM, and shipped agentic AI systems to 20,000+ enterprise users across 15 countries.
+        My edge is that I understand the technical stack — from model evaluation to agent orchestration — deeply enough to make faster, better product decisions and build real credibility with engineering and data science teams.
+      </p>
+      <div class="edu-block">
+        <div class="section-label" style="font-size:0.65rem;margin-bottom:0.6rem;">Education</div>
+        <div class="edu-item"><div class="edu-dot"></div><div><strong>Carnegie Mellon University, Heinz College</strong><br>MS, Information Systems Management — Business Intelligence & Data Analytics</div></div>
+        <div class="edu-item"><div class="edu-dot"></div><div><strong>Indian Institute of Management (IIM), Mumbai</strong><br>MBA, Business Administration</div></div>
+        <div class="edu-item"><div class="edu-dot"></div><div><strong>Bhilai Institute of Technology</strong><br>BS, Computer Science</div></div>
+      </div>
+      <div class="contact-links">
+        <a href="#" class="contact-link">📧 Email</a>
+        <a href="#" class="contact-link">💼 LinkedIn</a>
+        <a href="#" class="contact-link">🐙 GitHub</a>
+        <a href="#" class="contact-link">📄 Resume PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built with HTML · Deploy free on <span class="footer-gold">GitHub Pages · Netlify · Vercel</span> · Details anonymized per confidentiality obligations · &copy; 2025
+</footer>
+
+<!-- ADD/EDIT PROJECT MODAL -->
+<div class="modal-overlay" id="project-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modal-title">Add New Project</h3>
+    <div class="form-group"><label class="form-label">Project Title</label><input class="form-input" id="f-title" placeholder="e.g. AI Recommendation Engine" /></div>
+    <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" id="f-desc" placeholder="What does it do? What AI/tech? What was your role?"></textarea></div>
+    <div class="form-group">
+      <label class="form-label">Tags</label>
+      <div class="tag-checkboxes">
+        <input type="checkbox" class="tag-checkbox" id="t-ai" value="ai"><label class="tag-checkbox-label tag-ai" for="t-ai">GenAI</label>
+        <input type="checkbox" class="tag-checkbox" id="t-agent" value="agent"><label class="tag-checkbox-label tag-agent" for="t-agent">Agentic</label>
+        <input type="checkbox" class="tag-checkbox" id="t-genai" value="genai"><label class="tag-checkbox-label tag-genai" for="t-genai">LLM</label>
+        <input type="checkbox" class="tag-checkbox" id="t-data" value="data"><label class="tag-checkbox-label tag-data" for="t-data">Data</label>
+        <input type="checkbox" class="tag-checkbox" id="t-rag" value="rag"><label class="tag-checkbox-label tag-rag" for="t-rag">RAG</label>
+        <input type="checkbox" class="tag-checkbox" id="t-mlops" value="mlops"><label class="tag-checkbox-label tag-mlops" for="t-mlops">MLOps</label>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">Thumbnail Image</label><input type="file" accept="image/*" id="f-thumb" class="form-input" style="padding:0.35rem;" /><div style="font-size:0.68rem;color:var(--text-muted);margin-top:0.25rem;">Upload a screenshot or architecture diagram</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="form-group"><label class="form-label">Demo URL</label><input class="form-input" id="f-demo" placeholder="https://..." /></div>
+      <div class="form-group"><label class="form-label">GitHub / Link</label><input class="form-input" id="f-github" placeholder="https://github.com/..." /></div>
+    </div>
+    <div class="form-group"><label class="form-label">Year</label><input class="form-input" id="f-year" placeholder="2025" /></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeModal()">Cancel</button><button class="btn-save" onclick="saveProject()">Save Project →</button></div>
+  </div>
+</div>
+
+<!-- PROFILE EDIT MODAL -->
+<div class="modal-overlay" id="profile-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeProfileModal()">✕</button>
+    <h3>Edit Your Profile</h3>
+    <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="p-name" placeholder="Your Name" /></div>
+    <div class="form-group"><label class="form-label">Initials (for avatar)</label><input class="form-input" id="p-initials" placeholder="YN" maxlength="3" /></div>
+    <div class="form-group"><label class="form-label">Bio</label><textarea class="form-textarea" id="p-bio" style="min-height:110px;"></textarea></div>
+    <div class="form-group"><label class="form-label">Site Title (nav)</label><input class="form-input" id="p-sitetitle" placeholder="YourName.ai" /></div>
+    <div class="form-actions"><button class="btn-cancel" onclick="closeProfileModal()">Cancel</button><button class="btn-save" onclick="saveProfile()">Save →</button></div>
+  </div>
+</div>
+
+<script>
+// ── CASE STUDIES DATA (from your actual resume + conversation) ──
+const caseStudies = [
+  {
+    id: "cs1",
+    title: "Agentic AI Customer Support Platform",
+    client: "Leading PC & Consumer Electronics Manufacturer",
+    industry: "PC / Consumer Electronics",
+    tags: ["agent","rag","ai","genai"],
+    year: "2023–2024",
+    duration: "1.5 years",
+    role: "Technical Product Manager",
+    metrics: [
+      {val:"85%", label:"Query Accuracy"},
+      {val:"40%", label:"Ticket Automation"},
+      {val:"-20%", label:"Resolution Time"}
+    ],
+    problem: "A global PC manufacturer's support org spanning 20,000+ agents across 15 countries faced degrading performance on a keyword-only knowledge base. Query accuracy had fallen to 70% and resolution times were failing SLA commitments. Manual ticket triage was 100% of inbound volume, creating routing delays and inconsistent customer experiences.",
+    role_detail: "Solo TPM owning end-to-end product strategy, roadmap, agent architecture design, eval framework, and KPIs. Worked across AI engineers, architects, and data scientists. Responsible for phased rollout from 50-agent pilot to 20,000+ enterprise deployment.",
+    decisions: [
+      {label:"Multi-agent over single-agent", text:"Chose 8+ specialized agents (hardware troubleshooting, billing, escalation, KB gap detection, etc.) over a single general-purpose agent. Tradeoff: higher orchestration complexity, but dramatically higher accuracy on domain-specific tasks. A general agent degraded at scale."},
+      {label:"RAG + Knowledge Graph over fine-tuning", text:"Fine-tuning would require retraining every time the KB updated — weekly in this org. RAG with an LLM-powered knowledge graph gave real-time updatability, traceable retrieval, and hallucination mitigation critical when incorrect resolution steps could damage customer hardware."},
+      {label:"Phased rollout with eval gates", text:"Insisted on 50-agent pilot before enterprise rollout, with defined go/no-go criteria: ≥85% intent accuracy, escalation rate ≤15%, latency <3s P95. Pilot surfaced multi-language coherence gaps that were corrected before the 20K launch."},
+      {label:"85% as the ship threshold", text:"At 85% accuracy with a human escalation safety net at sub-threshold confidence scores, marginal harm from incorrect suggestions was contained. Argued against waiting for 90%+ — 6 more weeks of tuning showed diminishing returns on the offline eval."}
+    ],
+    ai_specs: [
+      {key:"Architecture", val:"Multi-agent (8+ agents), LLM-powered knowledge graph, RAG pipeline, agent orchestration layer, microservices"},
+      {key:"Retrieval", val:"Vector DB (Pinecone), hybrid dense + sparse search, top-K ranking with metadata filters"},
+      {key:"Eval I owned", val:"Intent accuracy, resolution success rate, latency P95, escalation rate, coverage, coherence, consistency, stability"},
+      {key:"LLM usage", val:"Commercial LLM API + RAG context. No fine-tuning V1. System prompts + citation requirement on all outputs"},
+      {key:"Failure modes planned", val:"Hallucinated HW resolutions, low-confidence retrievals, latency at 20K sessions, multi-language quality gaps"},
+      {key:"Ship criteria", val:"≥85% intent accuracy on 500-query holdout, <3s P95 latency at load, zero P0s in pilot QA sweep"}
+    ],
+    diff: "Would invest earlier in a feature store. We rebuilt feature pipelines 3 times due to unstandardized inputs — cost ~6 weeks. Would also build the eval benchmark before writing any code, not after the first prototype.",
+    stack: "LangChain · Pinecone · AWS Bedrock · GCP AgentSpace · Python · LLM APIs · Microservices"
+  },
+  {
+    id: "cs2",
+    title: "GenAI Reverse Logistics Automation",
+    client: "Global Networking & Technology Company",
+    industry: "Enterprise Technology / Supply Chain",
+    tags: ["genai","ai"],
+    year: "2024",
+    duration: "4 months",
+    role: "Technical Program Manager",
+    metrics: [
+      {val:"-30%", label:"Human Effort"},
+      {val:"4 mo", label:"0→Production"},
+      {val:"Faster", label:"Resolution Cycles"}
+    ],
+    problem: "A global networking company's reverse logistics process — evaluating returned goods for repair, refurbishment, or disposal — was almost entirely manual. Each returned unit required human assessment, creating a bottleneck that slowed resolution cycles and tied up working capital in unprocessed returns inventory.",
+    role_detail: "Owned end-to-end AI program lifecycle: requirements gathering, sprint planning, stakeholder alignment, scope management. Delivered a production-ready GenAI solution in 4 months. Applied Agile delivery and realigned scope mid-cycle based on stakeholder feedback.",
+    decisions: [
+      {label:"What GenAI specifically automated", text:"GenAI extracted and classified unstructured assessment data from technician notes, photos, and diagnostic outputs — replacing manual review steps with automated disposition recommendations (repair / refurbish / scrap). Humans retained final approval authority."},
+      {label:"Scope discipline at 4-month deadline", text:"Deliberately scoped to the highest-volume return categories (top 3 by ticket volume = 70% of returns) rather than covering the full catalog at lower quality. Proved the model at 95% quality on 3 categories vs 70% on all 20."},
+      {label:"Stakeholder alignment on mid-cycle feedback", text:"Requirements shifted mid-sprint when operations team identified a new return category not in original scope. Re-scoped sprint 3 explicitly — documented the tradeoff (delayed original feature, gained higher-priority coverage) and got written sign-off from sponsor."}
+    ],
+    ai_specs: [
+      {key:"Approach", val:"Generative AI for unstructured data extraction and disposition classification from technician notes and diagnostic outputs"},
+      {key:"Eval", val:"Accuracy on held-out labeled returns, human approval rate (% AI recommendations accepted), processing cycle time"},
+      {key:"Failure modes planned", val:"Incorrect scrap disposition (revenue loss), overconfident recommendations on rare SKUs, model drift as return patterns change"},
+      {key:"Delivery", val:"Production-ready in 4 months: requirements → sprint delivery → stakeholder review → production deployment"}
+    ],
+    diff: "Would conduct a returns data quality audit in week 1. Discovered mid-project that technician note quality varied significantly by region — structured the inputs earlier would have saved 2 sprint cycles of data cleaning.",
+    stack: "Generative AI APIs · Python · Agile delivery · Enterprise integration"
+  },
+  {
+    id: "cs3",
+    title: "Payments Data Product — $50M Commerce Platform",
+    client: "Large Financial Technology Company",
+    industry: "Fintech / Payments / Commerce",
+    tags: ["data","mlops"],
+    year: "2018–2023",
+    duration: "4.5 years",
+    role: "Data Product Manager",
+    metrics: [
+      {val:"$50M", label:"Incremental Billings"},
+      {val:"1B+", label:"Transactions Analyzed"},
+      {val:"50→2%", label:"Data Discrepancy Rate"}
+    ],
+    problem: "The Wallet, Payments & Commerce analytics team had no unified view of the customer transaction journey across 7 lines of business. Drop-off and friction points were invisible — teams operated on siloed dashboards, couldn't correlate cross-LOB behavior, and had no early warning system for data anomalies. Commerce platform billings were underperforming with no clear diagnosis.",
+    role_detail: "Data Product Manager owning end-to-end product lifecycle: PRD authoring, 30+ metric definitions, data pipeline requirements (Tier-1 and Tier-2), BI dashboard wireframes, and cross-functional privacy reviews. Led engineering, analytics, QA, and visualization teams.",
+    decisions: [
+      {label:"Metric design: what to measure and why", text:"Defined 30+ performance metrics — the key judgment wasn't the number, it was choosing add-to-cart rate over click rate as the primary conversion metric. Click rate would have gamed the funnel without driving billings. Also chose 7-day revenue per session over session revenue to capture repeat-purchase behavior."},
+      {label:"Data quality overhaul: 50% → 2% discrepancy", text:"Redesigned validation processes across data systems end-to-end. Built anomaly alert framework with tiered severity (P0 pipeline stops, P1 distribution shifts, P2 investigative trends). Eliminated 50% discrepancy rate that was causing product teams to make decisions on bad data."},
+      {label:"Privacy-first commerce feature reviews", text:"Drove cross-functional privacy reviews that quantified business impact vs compliance risk for 3 major commerce features. Got approvals that enabled on-time launches — avoided the default of 'block until perfect privacy' that had delayed 2 prior launches indefinitely."}
+    ],
+    ai_specs: [
+      {key:"Scale", val:"1B+ transactions, 300M customers, 7 lines of business — all in one unified customer journey funnel"},
+      {key:"Data Quality", val:"Automated validation framework, anomaly detection alerts, 50%→2% discrepancy rate reduction"},
+      {key:"ML connection", val:"Pipelines fed downstream ML models including fraud detection and recommendation systems. Data quality work directly enabled ML accuracy."},
+      {key:"Tooling", val:"Python · SQL · PySpark · Trino · Teradata · Tableau · Splunk · AWS"},
+      {key:"Privacy", val:"Cross-functional privacy reviews quantifying business impact vs compliance risk — secured approvals for 3 feature launches"}
+    ],
+    diff: "Defined feature criticality with the data science team too late. Spent 4 weeks monitoring low-impact data pipelines while high-risk ML-feeding pipelines had basic coverage. Should have done the risk mapping in week 1 of the monitoring build.",
+    stack: "Python · SQL · PySpark · Tableau · Trino · Teradata · AWS · Splunk"
+  }
+];
+
+// ── PUBLIC PROJECTS DATA ──
+let projects = [
+  {id:1,title:"PRD: Agentic AI Support Platform",desc:"Full product requirements document for an enterprise-scale multi-agent AI support system — covering 8+ specialized agents, RAG pipeline, eval framework, rollout gates, and risk register. Written as portfolio artifact.",tags:["agent","rag","ai","genai"],demo:"#",github:"#",year:"2025",thumb:null},
+  {id:2,title:"LLM Eval Framework Template",desc:"Reusable evaluation framework for AI PM teams: 10 evaluation dimensions (intent accuracy, hallucination rate, retrieval recall, latency P95, CSAT), benchmark construction methodology, and go/no-go ship criteria templates.",tags:["ai","genai"],demo:"#",github:"#",year:"2025",thumb:null},
+  {id:3,title:"RAG Knowledge Base Assistant",desc:"Retrieval-Augmented Generation system over internal docs. Uses embeddings + vector DB for semantic search. Includes confidence scoring, source citation enforcement, and graceful fallback for low-confidence retrievals.",tags:["rag","ai","genai"],demo:"#",github:"#",year:"2025",thumb:null},
+  {id:4,title:"Data Quality Monitoring Dashboard",desc:"ML pipeline health monitoring system: statistical distribution drift detection (K-S test), tiered alerting (P0/P1/P2), and weekly gap reports. Built to solve the silent model degradation problem from production experience.",tags:["data","mlops"],demo:"#",github:"#",year:"2024",thumb:null},
+  {id:5,title:"AI Meeting Summarizer & Action Tracker",desc:"Transcribes meetings via Whisper, extracts action items with LLM, syncs to Notion/Jira. Reduces ~2hrs/week per team member. Includes entity extraction for owners, deadlines, and blockers.",tags:["ai","genai","agent"],demo:"#",github:"#",year:"2025",thumb:null},
+  {id:6,title:"Retail Forecasting Model",desc:"Replaced legacy forecasting system with a new ML model that generated $1M in quarterly savings. Applied time-series modeling and feature engineering; documented enhancement recommendations for product team.",tags:["data","ai"],demo:"#",github:"#",year:"2022",thumb:null}
+];
+
+const tagColors={ai:"tag-ai",agent:"tag-agent",genai:"tag-genai",data:"tag-data",rag:"tag-rag",mlops:"tag-mlops"};
+const tagLabels={ai:"GenAI",agent:"Agentic",genai:"LLM",data:"Data",rag:"RAG",mlops:"MLOps"};
+const cardIcons={ai:"🤖",agent:"⚡",rag:"🔍",data:"📊",mlops:"🔧",default:"✨"};
+let editingId=null,activeFilter="all";
+
+// ── RENDER CASE STUDIES ──
+function renderCaseStudies(){
+  const grid=document.getElementById("case-grid");
+  grid.innerHTML=caseStudies.map(cs=>{
+    const tagHTML=cs.tags.map(t=>`<span class="tag ${tagColors[t]||'tag-ai'}">${tagLabels[t]||t}</span>`).join("");
+    const metricsHTML=cs.metrics.map(m=>`<div class="cm"><div class="cm-val">${m.val}</div><div class="cm-label">${m.label}</div></div>`).join("");
+    const decisionsHTML=cs.decisions.map(d=>`<div class="detail-decision"><strong>↗ ${d.label}</strong>${d.text}</div>`).join("");
+    const aiSpecHTML=cs.ai_specs.map(s=>`<div class="ai-spec"><div class="ai-spec-key">${s.key}</div><div class="ai-spec-val">${s.val}</div></div>`).join("");
+    return`<div class="case-card">
+      <div class="case-card-header">
+        <div class="case-card-tags">${tagHTML}</div>
+        <div class="case-card-title">${cs.title}</div>
+      </div>
+      <p class="case-card-desc">${cs.problem.substring(0,160)}…</p>
+      <div class="case-metrics">${metricsHTML}</div>
+      <div class="case-card-footer">
+        <span class="case-year">${cs.role} · ${cs.duration}</span>
+        <button class="case-expand-btn" onclick="toggleCase('${cs.id}',this)">Read Case Study ↓</button>
+      </div>
+      <div class="case-detail" id="detail-${cs.id}">
+        <div class="conf-note">🔒 Anonymized — client identity & proprietary details generalized</div>
+        <div class="detail-section"><div class="detail-label">Problem</div><div class="detail-text">${cs.problem}</div></div>
+        <div class="detail-section"><div class="detail-label">My Role & Constraints</div><div class="detail-text">${cs.role_detail}</div></div>
+        <div class="detail-section"><div class="detail-label">Key Decisions I Made</div>${decisionsHTML}</div>
+        <div class="detail-section"><div class="detail-label">AI / ML Specifics</div><div class="ai-spec-grid">${aiSpecHTML}</div></div>
+        <div class="detail-section"><div class="detail-label">Tech Stack</div><div class="detail-text" style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--gold-dim);">${cs.stack}</div></div>
+        <div class="detail-section"><div class="detail-label">What I'd Do Differently</div><div class="what-diff">${cs.diff}</div></div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function toggleCase(id,btn){
+  const detail=document.getElementById("detail-"+id);
+  const open=detail.classList.toggle("open");
+  btn.textContent=open?"Close ↑":"Read Case Study ↓";
+}
+
+// ── RENDER PUBLIC PROJECTS ──
+function getIcon(tags){for(const t of tags)if(cardIcons[t])return cardIcons[t];return cardIcons.default;}
+
+function renderProjects(){
+  const grid=document.getElementById("projects-grid");
+  const filtered=activeFilter==="all"?projects:projects.filter(p=>p.tags.includes(activeFilter));
+  grid.innerHTML="";
+  filtered.forEach((p,i)=>{
+    const card=document.createElement("div");
+    card.className="project-card";card.dataset.id=p.id;card.style.animationDelay=`${i*0.07}s`;card.draggable=true;
+    const thumbHTML=p.thumb
+      ?`<img class="card-img" src="${p.thumb}" alt="${p.title}" />`
+      :`<div class="thumb-placeholder"><div class="thumb-grid"></div><div class="thumb-icon">${getIcon(p.tags)}</div></div>`;
+    card.innerHTML=`<div style="position:relative;">${thumbHTML}<button class="thumb-upload-btn" onclick="triggerThumbUpload(event,${p.id})">📷 Change Image</button></div>
+    <div class="card-body">
+      <div class="card-tags">${p.tags.map(t=>`<span class="tag ${tagColors[t]||'tag-ai'}">${tagLabels[t]||t}</span>`).join("")}</div>
+      <div class="card-title">${p.title}</div>
+      <p class="card-desc">${p.desc}</p>
+      <div class="card-footer"><span class="card-meta">${p.year}</span>
+        <div class="card-links"><button class="card-link card-link-edit" onclick="editProject(event,${p.id})">✎ Edit</button></div>
+      </div>
+    </div>`;
+    setupDrag(card);
+    grid.appendChild(card);
+  });
+  const addCard=document.createElement("div");
+  addCard.className="add-card";
+  addCard.innerHTML=`<div class="add-card-icon">＋</div><div class="add-card-label">Add New Project</div>`;
+  addCard.onclick=()=>openAddModal();
+  grid.appendChild(addCard);
+}
+
+function filterCards(f,btn){activeFilter=f;document.querySelectorAll(".filter-tab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderProjects();}
+function setLayout(mode,btn){document.querySelectorAll(".layout-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("projects-grid").classList.toggle("list-view",mode==="list");}
+
+// ── DRAG ──
+let dragSrc=null;
+function setupDrag(card){
+  card.addEventListener("dragstart",e=>{dragSrc=card;setTimeout(()=>card.classList.add("dragging"),0);});
+  card.addEventListener("dragend",()=>{card.classList.remove("dragging");document.querySelectorAll(".drag-over").forEach(c=>c.classList.remove("drag-over"));});
+  card.addEventListener("dragover",e=>{e.preventDefault();if(card!==dragSrc&&!card.classList.contains("add-card")){document.querySelectorAll(".drag-over").forEach(c=>c.classList.remove("drag-over"));card.classList.add("drag-over");}});
+  card.addEventListener("drop",e=>{e.preventDefault();if(dragSrc&&card!==dragSrc&&card.dataset.id){const si=parseInt(dragSrc.dataset.id),di=parseInt(card.dataset.id);const sx=projects.findIndex(p=>p.id===si),dx=projects.findIndex(p=>p.id===di);const[item]=projects.splice(sx,1);projects.splice(dx,0,item);renderProjects();}card.classList.remove("drag-over");});
+}
+
+// ── MODALS ──
+function openAddModal(){editingId=null;document.getElementById("modal-title").textContent="Add New Project";["f-title","f-desc","f-demo","f-github","f-year"].forEach(id=>document.getElementById(id).value="");document.querySelectorAll(".tag-checkbox").forEach(c=>c.checked=false);document.getElementById("project-modal").classList.add("open");}
+function editProject(e,id){e.stopPropagation();editingId=id;const p=projects.find(x=>x.id===id);document.getElementById("modal-title").textContent="Edit Project";document.getElementById("f-title").value=p.title;document.getElementById("f-desc").value=p.desc;document.getElementById("f-demo").value=p.demo||"";document.getElementById("f-github").value=p.github||"";document.getElementById("f-year").value=p.year||"";document.querySelectorAll(".tag-checkbox").forEach(c=>{c.checked=p.tags.includes(c.value);});document.getElementById("project-modal").classList.add("open");}
+function closeModal(){document.getElementById("project-modal").classList.remove("open");}
+function saveProject(){const title=document.getElementById("f-title").value.trim();if(!title){alert("Please enter a project title.");return;}const tags=[...document.querySelectorAll(".tag-checkbox:checked")].map(c=>c.value);const data={title,desc:document.getElementById("f-desc").value.trim()||"An AI project.",tags:tags.length?tags:["ai"],demo:document.getElementById("f-demo").value.trim(),github:document.getElementById("f-github").value.trim(),year:document.getElementById("f-year").value.trim()||new Date().getFullYear().toString(),thumb:null};const file=document.getElementById("f-thumb").files[0];const proceed=(td)=>{data.thumb=td;if(editingId){const idx=projects.findIndex(p=>p.id===editingId);if(!data.thumb&&projects[idx].thumb)data.thumb=projects[idx].thumb;projects[idx]={...projects[idx],...data};}else{data.id=Date.now();projects.push(data);}closeModal();renderProjects();};if(file){const r=new FileReader();r.onload=e=>proceed(e.target.result);r.readAsDataURL(file);}else proceed(null);}
+function triggerThumbUpload(e,id){e.stopPropagation();const input=document.createElement("input");input.type="file";input.accept="image/*";input.onchange=ev=>{const file=ev.target.files[0];if(!file)return;const r=new FileReader();r.onload=re=>{const p=projects.find(x=>x.id===id);if(p){p.thumb=re.target.result;renderProjects();}};r.readAsDataURL(file);};input.click();}
+function openProfileEdit(){document.getElementById("p-name").value=document.getElementById("about-name").textContent;document.getElementById("p-initials").value=document.getElementById("avatar-initials").textContent;document.getElementById("p-bio").value=document.getElementById("about-bio").textContent.trim();document.getElementById("p-sitetitle").value=document.querySelector(".nav-logo").textContent;document.getElementById("profile-modal").classList.add("open");}
+function closeProfileModal(){document.getElementById("profile-modal").classList.remove("open");}
+function saveProfile(){document.getElementById("about-name").textContent=document.getElementById("p-name").value||"Your Name";document.getElementById("avatar-initials").textContent=(document.getElementById("p-initials").value||"YN").toUpperCase();document.getElementById("about-bio").textContent=document.getElementById("p-bio").value;document.querySelector(".nav-logo").textContent=document.getElementById("p-sitetitle").value||"YourName.ai";closeProfileModal();}
+
+// ── SKILLS ──
+const skills=[
+  {icon:"🤖",name:"Agentic AI Design",level:"Advanced",pct:90},
+  {icon:"🔍",name:"RAG Systems",level:"Advanced",pct:88},
+  {icon:"🧠",name:"LLM Evaluation",level:"Expert",pct:92},
+  {icon:"🔗",name:"Knowledge Graphs",level:"Advanced",pct:82},
+  {icon:"⚡",name:"LangChain / LlamaIndex",level:"Proficient",pct:75},
+  {icon:"📦",name:"AWS Bedrock / SageMaker",level:"Proficient",pct:72},
+  {icon:"☁️",name:"GCP Vertex AI / AgentSpace",level:"Proficient",pct:70},
+  {icon:"🐍",name:"Python / PySpark / SQL",level:"Proficient",pct:78},
+  {icon:"📊",name:"Product Strategy",level:"Expert",pct:95},
+  {icon:"🗺️",name:"Roadmapping & PRDs",level:"Expert",pct:96},
+  {icon:"🎯",name:"Stakeholder Management",level:"Expert",pct:93},
+  {icon:"⚙️",name:"Agile / Scrum",level:"Expert",pct:95},
+  {icon:"📈",name:"Data Products & Analytics",level:"Expert",pct:90},
+  {icon:"🔬",name:"ML / Data Science",level:"Proficient",pct:76},
+];
+
+function renderSkills(){
+  const grid=document.getElementById("skills-grid");
+  grid.innerHTML=skills.map(s=>`<div class="skill-card"><div class="skill-icon">${s.icon}</div><div class="skill-name">${s.name}</div><div class="skill-level">${s.level}</div><div class="skill-bar"><div class="skill-fill" style="width:0%" data-pct="${s.pct}"></div></div></div>`).join("");
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll(".skill-fill").forEach(b=>{b.style.width=b.dataset.pct+"%";});obs.unobserve(e.target);}});},{threshold:0.2});
+  obs.observe(grid);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",e=>{const el=document.getElementById(a.getAttribute("href").slice(1));if(el){e.preventDefault();el.scrollIntoView({behavior:"smooth"});}});});
+
+renderCaseStudies();
+renderProjects();
+renderSkills();
+</script>
+</body>
+</html>
